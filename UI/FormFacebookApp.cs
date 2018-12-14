@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using Model;
+using System.Threading;
 
 namespace UI
 {
@@ -15,6 +16,7 @@ namespace UI
 		public FormFacebookApp()
 		{
 			InitializeComponent();
+			controlHomePage = new ControlHomePage();
 		}
 
 		protected override void OnShown(EventArgs e)
@@ -24,30 +26,43 @@ namespace UI
 				m_AppSettings = AppSettings.Instance;
 				if (m_AppSettings.RememberUser && !string.IsNullOrEmpty(m_AppSettings.LastAccessToken))
 				{
-					DataManagerWrapper.SetDataManager(this, FacebookConnection.Connect(m_AppSettings.LastAccessToken));
-					initializeUserPreferences();
-					showHomePage();
+					new Thread(AutomaticConnection).Start();
+				}
+				else
+				{
+					initManualLoginOption();
 				}
 			}
 			catch (Exception)
 			{
 			}
-
 			base.OnShown(e);
+		}
+
+		private void AutomaticConnection()
+		{
+			initializeUserPreferences();
+			DataManagerWrapper.SetDataManager(this, FacebookConnection.Connect(m_AppSettings.LastAccessToken));
+			showHomePage();
+		}
+
+		private void manualConnection()
+		{
+			DataManagerWrapper.SetDataManager(this, FacebookConnection.Login());
+			showHomePage();
 		}
 
 		private void initializeUserPreferences()
 		{
-			this.Location = m_AppSettings.Location;
-			checkBoxRememberUser.Checked = m_AppSettings.RememberUser;
+			this.Invoke(new Action(()=> Location = m_AppSettings.Location));
+			checkBoxRememberUser.Invoke(new Action(() => checkBoxRememberUser.Checked = m_AppSettings.RememberUser));
 		}
 
 		private void buttonLogin_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				DataManagerWrapper.SetDataManager(this, FacebookConnection.Login());
-				showHomePage();
+				manualConnection();
 			}
 			catch (Exception ex)
 			{
@@ -72,9 +87,13 @@ namespace UI
 
 		private void showHomePage()
 		{
+			this.Invoke(new Action(() => invokeHomePage()));
+		}
+
+		private void invokeHomePage()
+		{
 			BackgroundImage = global::UI.Properties.Resources.facebook_widescreen_navy_background_image;
 			panelMain.Controls.Clear();
-			controlHomePage = new ControlHomePage();
 			panelMain.Controls.Add(this.controlHomePage);
 			controlHomePage.AddLogoutButton(buttonLogout);
 			controlHomePage.ButtonFindARide_AddClickedListener(new EventHandler(buttonFindARide_Click));
@@ -97,9 +116,17 @@ namespace UI
 			this.BackgroundImage = global::UI.Properties.Resources.faccebook_background;
 			FacebookConnection.Logout();
 			panelMain.Controls.Clear();
-			panelMain.Controls.Add(buttonlLogin);
+			panelMain.Controls.Add(buttonLogin);
 			checkBoxRememberUser.Checked = false;
 			panelMain.Controls.Add(checkBoxRememberUser);
+			initManualLoginOption();
+		}
+
+		private void initManualLoginOption()
+		{
+			checkBoxRememberUser.Visible = true;
+			buttonLogin.Enabled = true;
+			buttonLogin.Text = "Login";
 		}
 
 		private void buttonFindARide_Click(object sender, EventArgs e)

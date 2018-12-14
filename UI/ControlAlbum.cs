@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace UI
 {

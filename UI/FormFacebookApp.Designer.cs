@@ -34,7 +34,7 @@ namespace UI
 			this.buttonLogout = new System.Windows.Forms.Button();
 			this.buttonBack = new System.Windows.Forms.Button();
 			this.panelMain = new System.Windows.Forms.Panel();
-			this.buttonlLogin = new System.Windows.Forms.Button();
+			this.buttonLogin = new System.Windows.Forms.Button();
 			this.checkBoxRememberUser = new System.Windows.Forms.CheckBox();
 			this.panelMain.SuspendLayout();
 			this.SuspendLayout();
@@ -75,7 +75,7 @@ namespace UI
 			// 
 			this.panelMain.BackColor = System.Drawing.Color.Transparent;
 			this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.panelMain.Controls.Add(this.buttonlLogin);
+			this.panelMain.Controls.Add(this.buttonLogin);
 			this.panelMain.Controls.Add(this.checkBoxRememberUser);
 			this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelMain.Location = new System.Drawing.Point(0, 0);
@@ -83,18 +83,19 @@ namespace UI
 			this.panelMain.Size = new System.Drawing.Size(632, 630);
 			this.panelMain.TabIndex = 0;
 			// 
-			// buttonlLogin
+			// buttonLogin
 			// 
-			this.buttonlLogin.BackColor = System.Drawing.Color.MediumBlue;
-			this.buttonlLogin.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
-			this.buttonlLogin.ForeColor = System.Drawing.Color.White;
-			this.buttonlLogin.Location = new System.Drawing.Point(272, 382);
-			this.buttonlLogin.Name = "buttonlLogin";
-			this.buttonlLogin.Size = new System.Drawing.Size(104, 45);
-			this.buttonlLogin.TabIndex = 8;
-			this.buttonlLogin.Text = "Login";
-			this.buttonlLogin.UseVisualStyleBackColor = false;
-			this.buttonlLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+			this.buttonLogin.BackColor = System.Drawing.Color.MediumBlue;
+			this.buttonLogin.Enabled = false;
+			this.buttonLogin.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
+			this.buttonLogin.ForeColor = System.Drawing.Color.White;
+			this.buttonLogin.Location = new System.Drawing.Point(247, 382);
+			this.buttonLogin.Name = "buttonLogin";
+			this.buttonLogin.Size = new System.Drawing.Size(145, 45);
+			this.buttonLogin.TabIndex = 8;
+			this.buttonLogin.Text = "Connecting...";
+			this.buttonLogin.UseVisualStyleBackColor = false;
+			this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
 			// 
 			// checkBoxRememberUser
 			// 
@@ -102,12 +103,13 @@ namespace UI
 			this.checkBoxRememberUser.Font = new System.Drawing.Font("Comic Sans MS", 8.25F);
 			this.checkBoxRememberUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.checkBoxRememberUser.Location = new System.Drawing.Point(272, 432);
-			this.checkBoxRememberUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.checkBoxRememberUser.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBoxRememberUser.Name = "checkBoxRememberUser";
 			this.checkBoxRememberUser.Size = new System.Drawing.Size(97, 19);
 			this.checkBoxRememberUser.TabIndex = 23;
 			this.checkBoxRememberUser.Text = "Remember Me";
 			this.checkBoxRememberUser.UseVisualStyleBackColor = true;
+			this.checkBoxRememberUser.Visible = false;
 			// 
 			// FormFacebookApp
 			// 
@@ -131,7 +133,7 @@ namespace UI
 		#endregion
 
 		private System.Windows.Forms.Panel panelMain;
-		private System.Windows.Forms.Button buttonlLogin;
+		private System.Windows.Forms.Button buttonLogin;
 		private System.Windows.Forms.Button buttonLogout;
 		private System.Windows.Forms.Button buttonBack;
 		private System.Windows.Forms.CheckBox checkBoxRememberUser;
