@@ -24,3 +24,5 @@ C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220
 C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-307922039\UI\obj\Debug\UI.FormMap.resources
 C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-307922039\UI\obj\Debug\UI.Properties.Resources.resources
 C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-307922039\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Users\noy mekahel\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220392\UI\obj\Debug\UI.exe
+C:\Users\noy mekahel\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220392\UI\obj\Debug\UI.pdb
