@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3CDF38A-FEFE-49A3-B3B0-E850DE1AF7B3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\resources\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FbGraphApiWrapper">
+      <HintPath>..\resources\FbGraphApiWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlbumPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlAlbum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlAlbum.Designer.cs">
+      <DependentUpon>ControlAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlCollagePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlCollagePage.Designer.cs">
+      <DependentUpon>ControlCollagePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlFilter.Designer.cs">
+      <DependentUpon>ControlFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlHomePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlHomePage.Designer.cs">
+      <DependentUpon>ControlHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlRidePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlRidePage.Designer.cs">
+      <DependentUpon>ControlRidePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlUserDetails.Designer.cs">
+      <DependentUpon>ControlUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataManagerWrapper.cs" />
+    <Compile Include="FormCollageFrameOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCollageFrameOptions.Designer.cs">
+      <DependentUpon>FormCollageFrameOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCollageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCollageView.Designer.cs">
+      <DependentUpon>FormCollageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFacebookApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFacebookApp.Designer.cs">
+      <DependentUpon>FormFacebookApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMap.Designer.cs">
+      <DependentUpon>FormMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPhotoInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPhotoInfo.Designer.cs">
+      <DependentUpon>FormPhotoInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IBackable.cs" />
+    <Compile Include="ILogoutable.cs" />
+    <Compile Include="PhotoPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormFacebookApp.resx">
+      <DependentUpon>FormFacebookApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMap.resx">
+      <DependentUpon>FormMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-button2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments_picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\faccebook-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facebook-widescreen-navy-background-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glitter-frame.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\like.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\like_picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0d449cb5-f10a-4a7f-bb84-3f549295edfa}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
