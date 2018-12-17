@@ -30,15 +30,28 @@ namespace UI
 			}
 		}
 
-		private void albumPictureBox_Click(object sender, EventArgs e)
+		private void addSingleAlbum(Album i_Album)
 		{
-			AlbumPictureBox albumPictureBox = sender as AlbumPictureBox;
+			PictureBox albumToAdd = new PictureBox()
+			{
+				Size = new Size(140, 90),
+				SizeMode = PictureBoxSizeMode.StretchImage
+			};
 
-			labelAlbumsName.Text = albumPictureBox.Album.Name;
+			albumToAdd.LoadAsync(i_Album.PictureSmallURL);
+			flowLayoutPanelUserAlbums.Controls.Add(albumToAdd);
+			albumToAdd.MouseHover += (sender, e) => albumPictureBox_MouseHover(sender, i_Album);
+			albumToAdd.MouseLeave += albumPictureBox_MouseLeave;
+			albumToAdd.Click += (sender, e) => albumPictureBox_Click(i_Album);
+		}
+
+		private void albumPictureBox_Click(Album i_Album)
+		{
+			labelAlbumsName.Text = i_Album.Name;
 			Controls.Remove(flowLayoutPanelUserAlbums);
 			Controls.Add(flowLayoutPanelUserAlbumsPhotos);
 
-			foreach (Photo currentPhoto in albumPictureBox.Album.Photos)
+			foreach (Photo currentPhoto in i_Album.Photos)
 			{
 				addSinglePhoto(currentPhoto);
 			}
@@ -47,84 +60,66 @@ namespace UI
 			buttonAlbums.Text = "Back to albums";
 		}
 
-		private void addSingleAlbum(Album i_Album)
+		private void albumPictureBox_MouseLeave(object sender, EventArgs e)
 		{
-			AlbumPictureBox albumToAdd = new AlbumPictureBox()
-			{
-				Album = i_Album,
-				Size = new Size(140, 90),
-				SizeMode = PictureBoxSizeMode.StretchImage
-			};
+			PictureBox albumPictureBox = sender as PictureBox;
+			albumPictureBox.BorderStyle = BorderStyle.None;
+			albumPictureBox.Cursor = Cursors.Default;
+			albumPictureBox.Invalidate();
+		}
 
-			albumToAdd.LoadAsync(i_Album.PictureSmallURL);
-			flowLayoutPanelUserAlbums.Controls.Add(albumToAdd);
-			albumToAdd.MouseHover += albumPictureBox_MouseHover;
-			albumToAdd.MouseLeave += albumPictureBox_MouseLeave;
-			albumToAdd.Click += albumPictureBox_Click;
+		private void albumPictureBox_MouseHover(object sender, Album i_Album)
+		{
+			PictureBox albumPictureBox = sender as PictureBox;
+			albumPictureBox.BorderStyle = BorderStyle.Fixed3D;
+			albumPictureBox.Cursor = Cursors.Hand;
+
+			using (Graphics G = Graphics.FromHwnd(albumPictureBox.Handle))
+			{
+				SizeF textSize = G.MeasureString(i_Album.Name, Font);
+				PointF locationToDraw = new PointF()
+				{
+					X = (albumPictureBox.Width / 2) - (textSize.Width / 2),
+					Y = (albumPictureBox.Height / 2) - (textSize.Height / 2)
+				};
+				G.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+				G.DrawString(i_Album.Name, new Font(Font, FontStyle.Bold), Brushes.White, locationToDraw);
+			}
 		}
 
 		private void addSinglePhoto(Photo i_Photo)
 		{
-			PhotoPictureBox photoToAdd = new PhotoPictureBox()
+			PictureBox photoToAdd = new PictureBox()
 			{
-				Photo = i_Photo,
 				Size = new Size(95, 80),
 				SizeMode = PictureBoxSizeMode.StretchImage
 			};
 
 			photoToAdd.LoadAsync(i_Photo.PictureNormalURL);
 			flowLayoutPanelUserAlbumsPhotos.Controls.Add(photoToAdd);
-			photoToAdd.Click += photoPictureBox_Click;
+			photoToAdd.Click += (sender, e) => photoPictureBox_Click(i_Photo);
 			photoToAdd.MouseHover += photoPictureBox_MouseHover;
 			photoToAdd.MouseLeave += photoPictureBox_MouseLeave;
 		}
 
 		private void photoPictureBox_MouseLeave(object sender, EventArgs e)
 		{
-			PhotoPictureBox photoPictureBox = sender as PhotoPictureBox;
+			PictureBox photoPictureBox = sender as PictureBox;
 			photoPictureBox.Cursor = Cursors.Default;
 			photoPictureBox.BorderStyle = BorderStyle.None;
 		}
 
 		private void photoPictureBox_MouseHover(object sender, EventArgs e)
 		{
-			PhotoPictureBox photoPictureBox = sender as PhotoPictureBox;
+			PictureBox photoPictureBox = sender as PictureBox;
 			photoPictureBox.Cursor = Cursors.Hand;
 			photoPictureBox.BorderStyle = BorderStyle.Fixed3D;
 		}
 
-		private void photoPictureBox_Click(object sender, EventArgs e)
+		private void photoPictureBox_Click(Photo i_Photo)
 		{
-			PhotoPictureBox photo = sender as PhotoPictureBox;
-			FormPhotoInfo	photoInfo = new FormPhotoInfo(photo);
+			FormPhotoInfo	photoInfo = new FormPhotoInfo(i_Photo);
 			photoInfo.ShowDialog();
-		}
-
-		private void albumPictureBox_MouseLeave(object sender, EventArgs e)
-		{
-			AlbumPictureBox albumPictureBox = sender as AlbumPictureBox;
-			albumPictureBox.BorderStyle = BorderStyle.None;
-			albumPictureBox.Cursor = Cursors.Default;
-			albumPictureBox.Invalidate();
-		}
-
-		private void albumPictureBox_MouseHover(object sender, EventArgs e)
-		{
-			AlbumPictureBox albumPictureBox = sender as AlbumPictureBox;
-			albumPictureBox.BorderStyle = BorderStyle.Fixed3D;
-			albumPictureBox.Cursor = Cursors.Hand;
-
-			using (Graphics G = Graphics.FromHwnd(albumPictureBox.Handle))
-			{
-				SizeF	textSize = G.MeasureString(albumPictureBox.Album.Name, Font);
-				PointF	locationToDraw = new PointF()
-				{
-					X = (albumPictureBox.Width / 2) - (textSize.Width / 2),
-					Y = (albumPictureBox.Height / 2) - (textSize.Height / 2)
-				};
-				G.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-				G.DrawString(albumPictureBox.Album.Name, new Font(Font, FontStyle.Bold), Brushes.White, locationToDraw);
-			}
 		}
 
 		private void buttonAlbums_Click(object sender, EventArgs e)

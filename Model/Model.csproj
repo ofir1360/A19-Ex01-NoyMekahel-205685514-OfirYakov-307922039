@@ -61,6 +61,7 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="EightImagesCollage.cs" />
     <Compile Include="FacebookConnection.cs" />
+    <Compile Include="FilterFactory.cs" />
     <Compile Include="FiveImagesCollage.cs" />
     <Compile Include="FourImagesCollage.cs" />
     <Compile Include="GenderFilter.cs" />

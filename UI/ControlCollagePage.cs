@@ -57,11 +57,12 @@ namespace UI
 			try
 			{
 				checkedListBoxFilter.Items.Clear();
-				ICollection<string> friendsNamesCollection = DataManagerWrapper.DataManager.GetFriendsNames();
+				ICollection<User> friendsCollection = DataManagerWrapper.DataManager.GetFriends();
+				checkedListBoxFilter.DisplayMember = "Name";
 
-				foreach (string name in friendsNamesCollection)
+				foreach (User friend in friendsCollection)
 				{
-					checkedListBoxFilter.Items.Add(name);
+					checkedListBoxFilter.Items.Add(friend);
 				}
 			}
 			catch (Exception)
@@ -75,17 +76,52 @@ namespace UI
 			try
 			{
 				checkedListBoxFilter.Items.Clear();
-				ICollection<string> albumsNamesCollection = DataManagerWrapper.DataManager.GetAlbumsNames();
+				ICollection<Album> albumsCollection = DataManagerWrapper.DataManager.GetAlbums();
+				checkedListBoxFilter.DisplayMember = "Name";
 
-				foreach (string name in albumsNamesCollection)
+				foreach (Album album in albumsCollection)
 				{
-					checkedListBoxFilter.Items.Add(name);
+					checkedListBoxFilter.Items.Add(album);
 				}
 			}
 			catch (Exception)
 			{
 				FormFacebookApp.ShowFacebookError("Couldn't fetch your albums names data.");
 			}
+		}
+
+		private void buttonSelectPhotos_Click(object sender, EventArgs e)
+		{
+			checkedListBoxPhotos.Items.Clear();
+			if (radioButtonAllPhotos.Checked == true)
+			{
+				setAllPhotosOnListBox();
+			}
+			else if (radioButtonSharedPhotos.Checked == true)
+			{
+				if (checkedListBoxFilter.CheckedItems.Count == 0)
+				{
+					MessageBox.Show("Error! You didn't selected any friends.");
+				}
+				else
+				{
+					setSharedPhotosOnListBox();
+				}
+			}
+			else
+			{
+				if (checkedListBoxFilter.CheckedItems.Count == 0)
+				{
+					MessageBox.Show("Error! You didn't selected any album.");
+				}
+				else
+				{
+					setSelectedAlbumsPhotosOnListBox();
+				}
+			}
+
+			checkedListBoxPhotos.Visible = true;
+			pictureBoxImage.Visible = true;
 		}
 
 		private void setSelectedAlbumsPhotosOnListBox()
@@ -152,40 +188,6 @@ namespace UI
 			{
 				FormFacebookApp.ShowFacebookError("Couldn't fetch albums data.");
 			}
-		}
-
-		private void buttonSelectPhotos_Click(object sender, EventArgs e)
-		{
-			checkedListBoxPhotos.Items.Clear();
-			if (radioButtonAllPhotos.Checked == true)
-			{
-				setAllPhotosOnListBox();
-			}
-			else if (radioButtonSharedPhotos.Checked == true)
-			{
-				if (checkedListBoxFilter.CheckedItems.Count == 0)
-				{
-					MessageBox.Show("Error! You didn't selected any friends.");
-				}
-				else
-				{
-					setSharedPhotosOnListBox();
-				}
-			}
-			else
-			{
-				if (checkedListBoxFilter.CheckedItems.Count == 0)
-				{
-					MessageBox.Show("Error! You didn't selected any album.");
-				}
-				else
-				{
-					setSelectedAlbumsPhotosOnListBox();
-				}
-			}
-
-			checkedListBoxPhotos.Visible = true;
-			pictureBoxImage.Visible = true;
 		}
 
 		private void listBoxPhotosChecked_SelectedIndexChanged(object sender, EventArgs e)

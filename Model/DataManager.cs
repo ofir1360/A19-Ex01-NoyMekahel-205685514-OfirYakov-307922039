@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using FacebookWrapper.ObjectModel;
+using System.Drawing;
 
 namespace Model
 {
@@ -16,9 +17,52 @@ namespace Model
 			m_LoggedInUser = i_LoggedInUser;
 		}
 
-		public string GetPictureNormalURL()
+		public Image GetImageNormal
 		{
-			return m_LoggedInUser.PictureNormalURL;
+			get
+			{
+				return m_LoggedInUser.ImageNormal;
+			}
+		}
+
+		public string GetFirstName
+		{
+			get
+			{
+				return m_LoggedInUser.FirstName;
+			}
+		}
+
+		public string GetLastName
+		{
+			get
+			{
+				return m_LoggedInUser.LastName;
+			}
+		}
+
+		public string GetEmail
+		{
+			get
+			{
+				return m_LoggedInUser.Email;
+			}
+		}
+
+		public string GetBirthday
+		{
+			get
+			{
+				return m_LoggedInUser.Birthday;
+			}
+		}
+
+		public int GetDaysTillBirthday
+		{
+			get
+			{
+				return calculateDaysTillBirthday();
+			}
 		}
 
 		public FacebookObjectCollection<User> GetFriends()
@@ -26,6 +70,7 @@ namespace Model
 			return m_LoggedInUser.Friends;
 		}
 
+		/*
 		public ICollection<string> GetFriendsNames()
 		{
 			List<string> allNames = new List<string>();
@@ -49,6 +94,7 @@ namespace Model
 
 			return allNames;
 		}
+		*/
 
 		public Education[] GetEducations()
 		{
@@ -75,10 +121,13 @@ namespace Model
 			return m_LoggedInUser.Events;
 		}
 
+		/*
 		public WorkExperience[] GetWorkExperiences()
 		{
+
 			return m_LoggedInUser.WorkExperiences;
 		}
+		*/
 
 		public ICollection<string> GetSortedFriendsLocation()
 		{
@@ -95,6 +144,7 @@ namespace Model
 			return locationsSet;
 		}
 
+		/*
 		public ICollection<string> GetEventsNames()
 		{
 			List<string> allEventsNames = new List<string>(m_LoggedInUser.Events.Count);
@@ -106,17 +156,30 @@ namespace Model
 
 			return allEventsNames;
 		}
+		*/
 
-		public ICollection<string> GetWorkPlacesNames()
+		public ICollection<WorkExperience> GetWorkPlaces()
 		{
-			List<string> allWorkPlacesNames = new List<string>(m_LoggedInUser.WorkExperiences.Length);
+			List<WorkExperience> allWorkPlaces = new List<WorkExperience>(m_LoggedInUser.WorkExperiences.Length);
 
 			foreach (WorkExperience currWorkPlace in m_LoggedInUser.WorkExperiences)
 			{
-				allWorkPlacesNames.Add(currWorkPlace.Name);
+				allWorkPlaces.Add(currWorkPlace);
 			}
 
-			return allWorkPlacesNames;
+			return allWorkPlaces;
+		}
+
+		public ICollection<string> GetAcademicInstitutionsNames()
+		{
+			List<string> allAcademicInstitutionsNames = new List<string>(m_LoggedInUser.Educations.Length);
+
+			foreach (Education currAcademicInstitution in m_LoggedInUser.Educations)
+			{
+				allAcademicInstitutionsNames.Add(currAcademicInstitution.School.Name);
+			}
+
+			return allAcademicInstitutionsNames;
 		}
 
 		public FacebookObjectCollection<Photo> GetAlbumsPhotos(ICollection<string> i_AlbumsNamesCollection)
@@ -135,18 +198,6 @@ namespace Model
 			}
 
 			return photosCollection;
-		}
-
-		public ICollection<string> GetAcademicInstitutionsNames()
-		{
-			List<string> allAcademicInstitutionsNames = new List<string>(m_LoggedInUser.Educations.Length);
-
-			foreach (Education currAcademicInstitution in m_LoggedInUser.Educations)
-			{
-				allAcademicInstitutionsNames.Add(currAcademicInstitution.School.Name);
-			}
-
-			return allAcademicInstitutionsNames;
 		}
 
 		public FacebookObjectCollection<Photo> GetSharedFriendsPhotos(ICollection<string> i_FriendsNamesCollection)
@@ -169,31 +220,6 @@ namespace Model
 			}
 
 			return photosList;
-		}
-
-		public string GetFirstName()
-		{
-			return m_LoggedInUser.FirstName;
-		}
-
-		public string GetLastName()
-		{
-			return m_LoggedInUser.LastName;
-		}
-
-		public string GetEmail()
-		{
-			return m_LoggedInUser.Email;
-		}
-
-		public string GetBirthday()
-		{
-			return m_LoggedInUser.Birthday;
-		}
-
-		public int GetDaysTillBirthday()
-		{
-			return calculateDaysTillBirthday();
 		}
 
 		private int calculateDaysTillBirthday()

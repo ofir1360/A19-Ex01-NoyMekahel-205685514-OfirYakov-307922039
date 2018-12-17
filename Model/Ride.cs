@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
+using static Model.FilterFactory;
 
 namespace Model
 {
@@ -70,14 +71,14 @@ namespace Model
 			return friendsFromChosenEvent;
 		}
 
-		public void AddFilter(IFilter i_Filter)
+		public void AddFilter(eFilter i_Filter, string i_Text)
 		{
 			if (m_FilterList == null)
 			{
 				m_FilterList = new List<IFilter>();
 			}
 
-			m_FilterList.Add(i_Filter);
+			m_FilterList.Add(FilterFactory.GetFilter(i_Filter, i_Text));
 		}
 
 		public ICollection<User> Filter()

@@ -14,14 +14,7 @@ namespace UI
 		{
 			try
 			{
-				pictureBoxUserProfile.LoadAsync(DataManagerWrapper.DataManager.GetPictureNormalURL());
-				labelFirstNameData.Text = DataManagerWrapper.DataManager.GetFirstName();
-				labelLastNameData.Text = DataManagerWrapper.DataManager.GetLastName();
-				labelEmailData.Text = DataManagerWrapper.DataManager.GetEmail();
-				labelBirthdayData.Text = DataManagerWrapper.DataManager.GetBirthday();
-
-				string daysTillBirthday = DataManagerWrapper.DataManager.GetDaysTillBirthday().ToString();
-				labelDaysTillBirthdayData.Text = daysTillBirthday.Equals("0") ? "Happy Birthday!" : daysTillBirthday;
+				dataManagerBindingSource.DataSource = DataManagerWrapper.DataManager;
 			}
 			catch (Exception)
 			{

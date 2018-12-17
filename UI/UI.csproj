@@ -50,9 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlbumPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ControlAlbum.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,11 +119,11 @@
     </Compile>
     <Compile Include="IBackable.cs" />
     <Compile Include="ILogoutable.cs" />
-    <Compile Include="PhotoPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlUserDetails.resx">
+      <DependentUpon>ControlUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFacebookApp.resx">
       <DependentUpon>FormFacebookApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +140,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Model.DataManager1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

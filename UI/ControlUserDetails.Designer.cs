@@ -29,181 +29,179 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.labelDaysTillBirthdayData = new System.Windows.Forms.Label();
-			this.labelBirthdayData = new System.Windows.Forms.Label();
-			this.labelDaysTillBirthday = new System.Windows.Forms.Label();
-			this.labelBirthday = new System.Windows.Forms.Label();
-			this.labelEmail = new System.Windows.Forms.Label();
-			this.labelLastName = new System.Windows.Forms.Label();
-			this.labelFirstName = new System.Windows.Forms.Label();
-			this.labelEmailData = new System.Windows.Forms.Label();
-			this.labelLastNameData = new System.Windows.Forms.Label();
-			this.labelFirstNameData = new System.Windows.Forms.Label();
+			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.Label getLastNameLabel;
+			System.Windows.Forms.Label getFirstNameLabel;
+			System.Windows.Forms.Label getEmailLabel;
+			System.Windows.Forms.Label getDaysTillBirthdayLabel;
+			System.Windows.Forms.Label getBirthdayLabel;
+			this.getBirthdayLabel1 = new System.Windows.Forms.Label();
+			this.getDaysTillBirthdayLabel1 = new System.Windows.Forms.Label();
+			this.getEmailLabel1 = new System.Windows.Forms.Label();
+			this.getFirstNameLabel1 = new System.Windows.Forms.Label();
+			this.getLastNameLabel1 = new System.Windows.Forms.Label();
 			this.pictureBoxUserProfile = new System.Windows.Forms.PictureBox();
 			this.pictureBoxFrame = new System.Windows.Forms.PictureBox();
+			this.dataManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			getLastNameLabel = new System.Windows.Forms.Label();
+			getFirstNameLabel = new System.Windows.Forms.Label();
+			getEmailLabel = new System.Windows.Forms.Label();
+			getDaysTillBirthdayLabel = new System.Windows.Forms.Label();
+			getBirthdayLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserProfile)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxFrame)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// labelDaysTillBirthdayData
+			// getBirthdayLabel1
 			// 
-			this.labelDaysTillBirthdayData.AutoSize = true;
-			this.labelDaysTillBirthdayData.Location = new System.Drawing.Point(212, 332);
-			this.labelDaysTillBirthdayData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelDaysTillBirthdayData.Name = "labelDaysTillBirthdayData";
-			this.labelDaysTillBirthdayData.Size = new System.Drawing.Size(60, 20);
-			this.labelDaysTillBirthdayData.TabIndex = 32;
-			this.labelDaysTillBirthdayData.Text = "label10";
+			this.getBirthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataManagerBindingSource, "GetBirthday", true));
+			this.getBirthdayLabel1.Location = new System.Drawing.Point(131, 198);
+			this.getBirthdayLabel1.Name = "getBirthdayLabel1";
+			this.getBirthdayLabel1.Size = new System.Drawing.Size(91, 23);
+			this.getBirthdayLabel1.TabIndex = 36;
+			this.getBirthdayLabel1.Text = "label1";
 			// 
-			// labelBirthdayData
+			// getDaysTillBirthdayLabel1
 			// 
-			this.labelBirthdayData.AutoSize = true;
-			this.labelBirthdayData.Location = new System.Drawing.Point(212, 298);
-			this.labelBirthdayData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelBirthdayData.Name = "labelBirthdayData";
-			this.labelBirthdayData.Size = new System.Drawing.Size(51, 20);
-			this.labelBirthdayData.TabIndex = 31;
-			this.labelBirthdayData.Text = "label9";
+			this.getDaysTillBirthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataManagerBindingSource, "GetDaysTillBirthday", true));
+			this.getDaysTillBirthdayLabel1.Location = new System.Drawing.Point(131, 221);
+			this.getDaysTillBirthdayLabel1.Name = "getDaysTillBirthdayLabel1";
+			this.getDaysTillBirthdayLabel1.Size = new System.Drawing.Size(91, 23);
+			this.getDaysTillBirthdayLabel1.TabIndex = 38;
+			this.getDaysTillBirthdayLabel1.Text = "label1";
 			// 
-			// labelDaysTillBirthday
+			// getEmailLabel1
 			// 
-			this.labelDaysTillBirthday.AutoSize = true;
-			this.labelDaysTillBirthday.Location = new System.Drawing.Point(22, 332);
-			this.labelDaysTillBirthday.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelDaysTillBirthday.Name = "labelDaysTillBirthday";
-			this.labelDaysTillBirthday.Size = new System.Drawing.Size(133, 20);
-			this.labelDaysTillBirthday.TabIndex = 30;
-			this.labelDaysTillBirthday.Text = "Days Till Birthday:";
+			this.getEmailLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataManagerBindingSource, "GetEmail", true));
+			this.getEmailLabel1.Location = new System.Drawing.Point(131, 174);
+			this.getEmailLabel1.Name = "getEmailLabel1";
+			this.getEmailLabel1.Size = new System.Drawing.Size(91, 23);
+			this.getEmailLabel1.TabIndex = 40;
+			this.getEmailLabel1.Text = "label1";
 			// 
-			// labelBirthday
+			// getFirstNameLabel1
 			// 
-			this.labelBirthday.AutoSize = true;
-			this.labelBirthday.Location = new System.Drawing.Point(22, 298);
-			this.labelBirthday.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelBirthday.Name = "labelBirthday";
-			this.labelBirthday.Size = new System.Drawing.Size(71, 20);
-			this.labelBirthday.TabIndex = 29;
-			this.labelBirthday.Text = "Birthday:";
+			this.getFirstNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataManagerBindingSource, "GetFirstName", true));
+			this.getFirstNameLabel1.Location = new System.Drawing.Point(131, 129);
+			this.getFirstNameLabel1.Name = "getFirstNameLabel1";
+			this.getFirstNameLabel1.Size = new System.Drawing.Size(91, 23);
+			this.getFirstNameLabel1.TabIndex = 42;
+			this.getFirstNameLabel1.Text = "label1";
 			// 
-			// labelEmail
+			// getLastNameLabel1
 			// 
-			this.labelEmail.AutoSize = true;
-			this.labelEmail.Location = new System.Drawing.Point(22, 266);
-			this.labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelEmail.Name = "labelEmail";
-			this.labelEmail.Size = new System.Drawing.Size(52, 20);
-			this.labelEmail.TabIndex = 28;
-			this.labelEmail.Text = "Email:";
-			// 
-			// labelLastName
-			// 
-			this.labelLastName.AutoSize = true;
-			this.labelLastName.Location = new System.Drawing.Point(22, 232);
-			this.labelLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelLastName.Name = "labelLastName";
-			this.labelLastName.Size = new System.Drawing.Size(90, 20);
-			this.labelLastName.TabIndex = 27;
-			this.labelLastName.Text = "Last Name:";
-			// 
-			// labelFirstName
-			// 
-			this.labelFirstName.AutoSize = true;
-			this.labelFirstName.Location = new System.Drawing.Point(22, 197);
-			this.labelFirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelFirstName.Name = "labelFirstName";
-			this.labelFirstName.Size = new System.Drawing.Size(90, 20);
-			this.labelFirstName.TabIndex = 26;
-			this.labelFirstName.Text = "First Name:";
-			// 
-			// labelEmailData
-			// 
-			this.labelEmailData.AutoSize = true;
-			this.labelEmailData.Location = new System.Drawing.Point(212, 266);
-			this.labelEmailData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelEmailData.Name = "labelEmailData";
-			this.labelEmailData.Size = new System.Drawing.Size(51, 20);
-			this.labelEmailData.TabIndex = 25;
-			this.labelEmailData.Text = "label3";
-			// 
-			// labelLastNameData
-			// 
-			this.labelLastNameData.AutoSize = true;
-			this.labelLastNameData.Location = new System.Drawing.Point(212, 232);
-			this.labelLastNameData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelLastNameData.Name = "labelLastNameData";
-			this.labelLastNameData.Size = new System.Drawing.Size(51, 20);
-			this.labelLastNameData.TabIndex = 24;
-			this.labelLastNameData.Text = "label2";
-			// 
-			// labelFirstNameData
-			// 
-			this.labelFirstNameData.AutoSize = true;
-			this.labelFirstNameData.Location = new System.Drawing.Point(212, 197);
-			this.labelFirstNameData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.labelFirstNameData.Name = "labelFirstNameData";
-			this.labelFirstNameData.Size = new System.Drawing.Size(51, 20);
-			this.labelFirstNameData.TabIndex = 23;
-			this.labelFirstNameData.Text = "label1";
+			this.getLastNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataManagerBindingSource, "GetLastName", true));
+			this.getLastNameLabel1.Location = new System.Drawing.Point(131, 151);
+			this.getLastNameLabel1.Name = "getLastNameLabel1";
+			this.getLastNameLabel1.Size = new System.Drawing.Size(91, 21);
+			this.getLastNameLabel1.TabIndex = 46;
+			this.getLastNameLabel1.Text = "label1";
 			// 
 			// pictureBoxUserProfile
 			// 
-			this.pictureBoxUserProfile.Location = new System.Drawing.Point(41, 34);
-			this.pictureBoxUserProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.pictureBoxUserProfile.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.dataManagerBindingSource, "GetImageNormal", true));
+			this.pictureBoxUserProfile.Location = new System.Drawing.Point(26, 22);
 			this.pictureBoxUserProfile.Name = "pictureBoxUserProfile";
-			this.pictureBoxUserProfile.Size = new System.Drawing.Size(122, 135);
-			this.pictureBoxUserProfile.TabIndex = 34;
+			this.pictureBoxUserProfile.Size = new System.Drawing.Size(81, 88);
+			this.pictureBoxUserProfile.TabIndex = 44;
 			this.pictureBoxUserProfile.TabStop = false;
 			// 
 			// pictureBoxFrame
 			// 
 			this.pictureBoxFrame.BackgroundImage = global::UI.Properties.Resources.glitter_frame;
 			this.pictureBoxFrame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.pictureBoxFrame.Location = new System.Drawing.Point(26, 23);
+			this.pictureBoxFrame.Location = new System.Drawing.Point(17, 15);
+			this.pictureBoxFrame.Margin = new System.Windows.Forms.Padding(2);
 			this.pictureBoxFrame.Name = "pictureBoxFrame";
-			this.pictureBoxFrame.Size = new System.Drawing.Size(150, 158);
+			this.pictureBoxFrame.Size = new System.Drawing.Size(100, 103);
 			this.pictureBoxFrame.TabIndex = 33;
 			this.pictureBoxFrame.TabStop = false;
 			// 
+			// getLastNameLabel
+			// 
+			getLastNameLabel.AutoSize = true;
+			getLastNameLabel.Location = new System.Drawing.Point(14, 151);
+			getLastNameLabel.Name = "getLastNameLabel";
+			getLastNameLabel.Size = new System.Drawing.Size(61, 13);
+			getLastNameLabel.TabIndex = 45;
+			getLastNameLabel.Text = "Last Name:";
+			// 
+			// getFirstNameLabel
+			// 
+			getFirstNameLabel.AutoSize = true;
+			getFirstNameLabel.Location = new System.Drawing.Point(14, 129);
+			getFirstNameLabel.Name = "getFirstNameLabel";
+			getFirstNameLabel.Size = new System.Drawing.Size(60, 13);
+			getFirstNameLabel.TabIndex = 41;
+			getFirstNameLabel.Text = "First Name:";
+			// 
+			// getEmailLabel
+			// 
+			getEmailLabel.AutoSize = true;
+			getEmailLabel.Location = new System.Drawing.Point(14, 174);
+			getEmailLabel.Name = "getEmailLabel";
+			getEmailLabel.Size = new System.Drawing.Size(35, 13);
+			getEmailLabel.TabIndex = 39;
+			getEmailLabel.Text = "Email:";
+			// 
+			// getDaysTillBirthdayLabel
+			// 
+			getDaysTillBirthdayLabel.AutoSize = true;
+			getDaysTillBirthdayLabel.Location = new System.Drawing.Point(14, 221);
+			getDaysTillBirthdayLabel.Name = "getDaysTillBirthdayLabel";
+			getDaysTillBirthdayLabel.Size = new System.Drawing.Size(91, 13);
+			getDaysTillBirthdayLabel.TabIndex = 37;
+			getDaysTillBirthdayLabel.Text = "Days Till Birthday:";
+			// 
+			// getBirthdayLabel
+			// 
+			getBirthdayLabel.AutoSize = true;
+			getBirthdayLabel.Location = new System.Drawing.Point(14, 198);
+			getBirthdayLabel.Name = "getBirthdayLabel";
+			getBirthdayLabel.Size = new System.Drawing.Size(48, 13);
+			getBirthdayLabel.TabIndex = 35;
+			getBirthdayLabel.Text = "Birthday:";
+			// 
+			// dataManagerBindingSource
+			// 
+			this.dataManagerBindingSource.DataSource = typeof(Model.DataManager);
+			// 
 			// ControlUserDetails
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Transparent;
+			this.Controls.Add(getBirthdayLabel);
+			this.Controls.Add(this.getBirthdayLabel1);
+			this.Controls.Add(getDaysTillBirthdayLabel);
+			this.Controls.Add(this.getDaysTillBirthdayLabel1);
+			this.Controls.Add(getEmailLabel);
+			this.Controls.Add(this.getEmailLabel1);
+			this.Controls.Add(getFirstNameLabel);
+			this.Controls.Add(this.getFirstNameLabel1);
 			this.Controls.Add(this.pictureBoxUserProfile);
+			this.Controls.Add(getLastNameLabel);
+			this.Controls.Add(this.getLastNameLabel1);
 			this.Controls.Add(this.pictureBoxFrame);
-			this.Controls.Add(this.labelDaysTillBirthdayData);
-			this.Controls.Add(this.labelBirthdayData);
-			this.Controls.Add(this.labelDaysTillBirthday);
-			this.Controls.Add(this.labelBirthday);
-			this.Controls.Add(this.labelEmail);
-			this.Controls.Add(this.labelLastName);
-			this.Controls.Add(this.labelFirstName);
-			this.Controls.Add(this.labelEmailData);
-			this.Controls.Add(this.labelLastNameData);
-			this.Controls.Add(this.labelFirstNameData);
-			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "ControlUserDetails";
-			this.Size = new System.Drawing.Size(338, 369);
+			this.Size = new System.Drawing.Size(225, 240);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserProfile)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxFrame)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataManagerBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Label labelDaysTillBirthdayData;
-		private System.Windows.Forms.Label labelBirthdayData;
-		private System.Windows.Forms.Label labelDaysTillBirthday;
-		private System.Windows.Forms.Label labelBirthday;
-		private System.Windows.Forms.Label labelEmail;
-		private System.Windows.Forms.Label labelLastName;
-		private System.Windows.Forms.Label labelFirstName;
-		private System.Windows.Forms.Label labelEmailData;
-		private System.Windows.Forms.Label labelLastNameData;
-		private System.Windows.Forms.Label labelFirstNameData;
 		private System.Windows.Forms.PictureBox pictureBoxFrame;
+		private System.Windows.Forms.BindingSource dataManagerBindingSource;
+		private System.Windows.Forms.Label getBirthdayLabel1;
+		private System.Windows.Forms.Label getDaysTillBirthdayLabel1;
+		private System.Windows.Forms.Label getEmailLabel1;
+		private System.Windows.Forms.Label getFirstNameLabel1;
 		private System.Windows.Forms.PictureBox pictureBoxUserProfile;
+		private System.Windows.Forms.Label getLastNameLabel1;
 	}
 }

@@ -57,13 +57,14 @@ namespace UI
 		{
 			try
 			{
-				if (DataManagerWrapper.DataManager.GetEvents().Count > 0)
-				{
-					ICollection<string> allEventsNames = DataManagerWrapper.DataManager.GetEventsNames();
+				ICollection<Event> allEvents = DataManagerWrapper.DataManager.GetEvents();
 
-					foreach (string currEventName in allEventsNames)
+				if (allEvents.Count > 0)
+				{
+					comboBoxEvents.DisplayMember = "Name";
+					foreach (Event currentEvent in allEvents)
 					{
-						comboBoxEvents.Items.Add(currEventName);
+						comboBoxEvents.Items.Add(currentEvent);
 					}
 
 					comboBoxEvents.Enabled = true;
@@ -97,13 +98,14 @@ namespace UI
 		{
 			try
 			{
-				if (DataManagerWrapper.DataManager.GetWorkExperiences() != null)
-				{
-					ICollection<string> allWorkPlacesNames = DataManagerWrapper.DataManager.GetWorkPlacesNames();
+				ICollection<WorkExperience> allWorkPlaces = DataManagerWrapper.DataManager.GetWorkPlaces();
 
-					foreach (string currWorkPlaceName in allWorkPlacesNames)
+				if (allWorkPlaces.Count > 0)
+				{
+					comboBoxWork.DisplayMember = "Name";
+					foreach (WorkExperience currWorkPlace in allWorkPlaces)
 					{
-						comboBoxWork.Items.Add(currWorkPlaceName);
+						comboBoxWork.Items.Add(currWorkPlace);
 					}
 
 					comboBoxWork.Enabled = true;
