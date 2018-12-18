@@ -121,6 +121,9 @@
     <Compile Include="ILogoutable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlCollagePage.resx">
+      <DependentUpon>ControlCollagePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlUserDetails.resx">
       <DependentUpon>ControlUserDetails.cs</DependentUpon>
     </EmbeddedResource>

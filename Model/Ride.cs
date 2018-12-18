@@ -71,14 +71,14 @@ namespace Model
 			return friendsFromChosenEvent;
 		}
 
-		public void AddFilter(eFilter i_Filter, string i_Text)
+		public void AddFilter(IFilter i_Filter)
 		{
 			if (m_FilterList == null)
 			{
 				m_FilterList = new List<IFilter>();
 			}
 
-			m_FilterList.Add(FilterFactory.GetFilter(i_Filter, i_Text));
+			m_FilterList.Add(i_Filter);
 		}
 
 		public ICollection<User> Filter()

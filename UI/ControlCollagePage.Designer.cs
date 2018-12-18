@@ -49,11 +49,9 @@
 			this.groupBoxPhotosChooser.Controls.Add(this.radioButtonSharedPhotos);
 			this.groupBoxPhotosChooser.Controls.Add(this.radioButtonAllPhotos);
 			this.groupBoxPhotosChooser.Enabled = false;
-			this.groupBoxPhotosChooser.Location = new System.Drawing.Point(40, 100);
-			this.groupBoxPhotosChooser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.groupBoxPhotosChooser.Location = new System.Drawing.Point(27, 65);
 			this.groupBoxPhotosChooser.Name = "groupBoxPhotosChooser";
-			this.groupBoxPhotosChooser.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.groupBoxPhotosChooser.Size = new System.Drawing.Size(184, 154);
+			this.groupBoxPhotosChooser.Size = new System.Drawing.Size(123, 100);
 			this.groupBoxPhotosChooser.TabIndex = 0;
 			this.groupBoxPhotosChooser.TabStop = false;
 			this.groupBoxPhotosChooser.Text = "Choose An Option:";
@@ -61,10 +59,9 @@
 			// radioButtonAlbumsPhotos
 			// 
 			this.radioButtonAlbumsPhotos.AutoSize = true;
-			this.radioButtonAlbumsPhotos.Location = new System.Drawing.Point(10, 115);
-			this.radioButtonAlbumsPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.radioButtonAlbumsPhotos.Location = new System.Drawing.Point(7, 75);
 			this.radioButtonAlbumsPhotos.Name = "radioButtonAlbumsPhotos";
-			this.radioButtonAlbumsPhotos.Size = new System.Drawing.Size(144, 24);
+			this.radioButtonAlbumsPhotos.Size = new System.Drawing.Size(97, 17);
 			this.radioButtonAlbumsPhotos.TabIndex = 2;
 			this.radioButtonAlbumsPhotos.Text = "Album\'s Photos";
 			this.radioButtonAlbumsPhotos.UseVisualStyleBackColor = true;
@@ -73,10 +70,9 @@
 			// radioButtonSharedPhotos
 			// 
 			this.radioButtonSharedPhotos.AutoSize = true;
-			this.radioButtonSharedPhotos.Location = new System.Drawing.Point(10, 80);
-			this.radioButtonSharedPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.radioButtonSharedPhotos.Location = new System.Drawing.Point(7, 52);
 			this.radioButtonSharedPhotos.Name = "radioButtonSharedPhotos";
-			this.radioButtonSharedPhotos.Size = new System.Drawing.Size(140, 24);
+			this.radioButtonSharedPhotos.Size = new System.Drawing.Size(95, 17);
 			this.radioButtonSharedPhotos.TabIndex = 1;
 			this.radioButtonSharedPhotos.Text = "Shared Photos";
 			this.radioButtonSharedPhotos.UseVisualStyleBackColor = true;
@@ -86,10 +82,9 @@
 			// 
 			this.radioButtonAllPhotos.AutoSize = true;
 			this.radioButtonAllPhotos.Checked = true;
-			this.radioButtonAllPhotos.Location = new System.Drawing.Point(10, 45);
-			this.radioButtonAllPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.radioButtonAllPhotos.Location = new System.Drawing.Point(7, 29);
 			this.radioButtonAllPhotos.Name = "radioButtonAllPhotos";
-			this.radioButtonAllPhotos.Size = new System.Drawing.Size(105, 24);
+			this.radioButtonAllPhotos.Size = new System.Drawing.Size(72, 17);
 			this.radioButtonAllPhotos.TabIndex = 0;
 			this.radioButtonAllPhotos.TabStop = true;
 			this.radioButtonAllPhotos.Text = "All Photos";
@@ -100,10 +95,9 @@
 			// 
 			this.checkedListBoxFilter.FormattingEnabled = true;
 			this.checkedListBoxFilter.HorizontalScrollbar = true;
-			this.checkedListBoxFilter.Location = new System.Drawing.Point(262, 103);
-			this.checkedListBoxFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.checkedListBoxFilter.Location = new System.Drawing.Point(175, 67);
 			this.checkedListBoxFilter.Name = "checkedListBoxFilter";
-			this.checkedListBoxFilter.Size = new System.Drawing.Size(212, 151);
+			this.checkedListBoxFilter.Size = new System.Drawing.Size(143, 94);
 			this.checkedListBoxFilter.TabIndex = 1;
 			this.checkedListBoxFilter.Visible = false;
 			this.checkedListBoxFilter.Click += new System.EventHandler(this.checkedListBox_Click);
@@ -113,10 +107,9 @@
 			// 
 			this.checkedListBoxPhotos.FormattingEnabled = true;
 			this.checkedListBoxPhotos.HorizontalScrollbar = true;
-			this.checkedListBoxPhotos.Location = new System.Drawing.Point(24, 281);
-			this.checkedListBoxPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.checkedListBoxPhotos.Location = new System.Drawing.Point(16, 183);
 			this.checkedListBoxPhotos.Name = "checkedListBoxPhotos";
-			this.checkedListBoxPhotos.Size = new System.Drawing.Size(218, 550);
+			this.checkedListBoxPhotos.Size = new System.Drawing.Size(147, 349);
 			this.checkedListBoxPhotos.TabIndex = 4;
 			this.checkedListBoxPhotos.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.photosCheckedListBox_ItemCheck);
 			this.checkedListBoxPhotos.Click += new System.EventHandler(this.checkedListBox_Click);
@@ -135,10 +128,9 @@
 			this.buttonSelectPhotos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.buttonSelectPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSelectPhotos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.buttonSelectPhotos.Location = new System.Drawing.Point(510, 219);
-			this.buttonSelectPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonSelectPhotos.Location = new System.Drawing.Point(340, 142);
 			this.buttonSelectPhotos.Name = "buttonSelectPhotos";
-			this.buttonSelectPhotos.Size = new System.Drawing.Size(218, 35);
+			this.buttonSelectPhotos.Size = new System.Drawing.Size(145, 23);
 			this.buttonSelectPhotos.TabIndex = 57;
 			this.buttonSelectPhotos.Text = "Select Photos";
 			this.buttonSelectPhotos.UseVisualStyleBackColor = false;
@@ -146,10 +138,9 @@
 			// 
 			// pictureBoxImage
 			// 
-			this.pictureBoxImage.Location = new System.Drawing.Point(282, 281);
-			this.pictureBoxImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.pictureBoxImage.Location = new System.Drawing.Point(188, 183);
 			this.pictureBoxImage.Name = "pictureBoxImage";
-			this.pictureBoxImage.Size = new System.Drawing.Size(606, 550);
+			this.pictureBoxImage.Size = new System.Drawing.Size(404, 357);
 			this.pictureBoxImage.TabIndex = 7;
 			this.pictureBoxImage.TabStop = false;
 			this.pictureBoxImage.Visible = false;
@@ -166,10 +157,9 @@
 			this.buttonSeeCollage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.buttonSeeCollage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSeeCollage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.buttonSeeCollage.Location = new System.Drawing.Point(726, 857);
-			this.buttonSeeCollage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonSeeCollage.Location = new System.Drawing.Point(484, 557);
 			this.buttonSeeCollage.Name = "buttonSeeCollage";
-			this.buttonSeeCollage.Size = new System.Drawing.Size(162, 35);
+			this.buttonSeeCollage.Size = new System.Drawing.Size(108, 23);
 			this.buttonSeeCollage.TabIndex = 58;
 			this.buttonSeeCollage.Text = "See Collage";
 			this.buttonSeeCollage.UseVisualStyleBackColor = false;
@@ -186,10 +176,9 @@
 			this.buttonCollageFrame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.buttonCollageFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonCollageFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.buttonCollageFrame.Location = new System.Drawing.Point(24, 39);
-			this.buttonCollageFrame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonCollageFrame.Location = new System.Drawing.Point(16, 25);
 			this.buttonCollageFrame.Name = "buttonCollageFrame";
-			this.buttonCollageFrame.Size = new System.Drawing.Size(218, 35);
+			this.buttonCollageFrame.Size = new System.Drawing.Size(145, 23);
 			this.buttonCollageFrame.TabIndex = 61;
 			this.buttonCollageFrame.Text = "Choose Collage Frame";
 			this.buttonCollageFrame.UseVisualStyleBackColor = false;
@@ -197,7 +186,7 @@
 			// 
 			// ControlCollagePage
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Transparent;
 			this.Controls.Add(this.buttonCollageFrame);
@@ -207,9 +196,8 @@
 			this.Controls.Add(this.checkedListBoxPhotos);
 			this.Controls.Add(this.checkedListBoxFilter);
 			this.Controls.Add(this.groupBoxPhotosChooser);
-			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "ControlCollagePage";
-			this.Size = new System.Drawing.Size(954, 966);
+			this.Size = new System.Drawing.Size(662, 628);
 			this.groupBoxPhotosChooser.ResumeLayout(false);
 			this.groupBoxPhotosChooser.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();

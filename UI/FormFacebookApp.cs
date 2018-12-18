@@ -62,6 +62,7 @@ namespace UI
 		{
 			try
 			{
+				//new Thread(manualConnection).Start();
 				manualConnection();
 			}
 			catch (Exception ex)
@@ -114,6 +115,7 @@ namespace UI
 		private void buttonLogout_Click(object sender, EventArgs e)
 		{
 			this.BackgroundImage = global::UI.Properties.Resources.faccebook_background;
+			//new Thread(FacebookConnection.Logout).Start();
 			FacebookConnection.Logout();
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(buttonLogin);
@@ -149,7 +151,7 @@ namespace UI
 
 		internal static void ShowFacebookError(string i_ErrorMessage = "An error has occured. Couldn't retrieve the requested information from facebook")
 		{
-			MessageBox.Show(i_ErrorMessage);
+		    MessageBox.Show(i_ErrorMessage);
 		}
 	}
 }

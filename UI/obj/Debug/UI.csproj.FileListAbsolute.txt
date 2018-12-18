@@ -27,3 +27,4 @@ C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220
 C:\Users\noy mekahel\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220392\UI\obj\Debug\UI.exe
 C:\Users\noy mekahel\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-3079220392\UI\obj\Debug\UI.pdb
 C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-307922039\UI\obj\Debug\UI.ControlUserDetails.resources
+C:\Users\ofir yakov\Source\Repos\A19-Ex01-NoyMekahel-205685514-OfirYakov-307922039\UI\obj\Debug\UI.ControlCollagePage.resources

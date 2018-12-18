@@ -17,7 +17,7 @@ namespace Model
 			m_LoggedInUser = i_LoggedInUser;
 		}
 
-		public Image GetImageNormal
+		public Image ImageNormal
 		{
 			get
 			{
@@ -25,7 +25,7 @@ namespace Model
 			}
 		}
 
-		public string GetFirstName
+		public string FirstName
 		{
 			get
 			{
@@ -33,7 +33,7 @@ namespace Model
 			}
 		}
 
-		public string GetLastName
+		public string LastName
 		{
 			get
 			{
@@ -41,7 +41,7 @@ namespace Model
 			}
 		}
 
-		public string GetEmail
+		public string Email
 		{
 			get
 			{
@@ -49,7 +49,7 @@ namespace Model
 			}
 		}
 
-		public string GetBirthday
+		public string Birthday
 		{
 			get
 			{
@@ -57,7 +57,7 @@ namespace Model
 			}
 		}
 
-		public int GetDaysTillBirthday
+		public int DaysTillBirthday
 		{
 			get
 			{
@@ -65,142 +65,103 @@ namespace Model
 			}
 		}
 
-		public FacebookObjectCollection<User> GetFriends()
+		public FacebookObjectCollection<User> Friends
 		{
-			return m_LoggedInUser.Friends;
-		}
-
-		/*
-		public ICollection<string> GetFriendsNames()
-		{
-			List<string> allNames = new List<string>();
-
-			foreach(User friend in m_LoggedInUser.Friends)
+			get
 			{
-				allNames.Add(friend.Name);
+				return m_LoggedInUser.Friends;
 			}
-
-			return allNames;
 		}
 
-		public ICollection<string> GetAlbumsNames()
+		public Education[] Educations
 		{
-			List<string> allNames = new List<string>();
-
-			foreach (Album album in m_LoggedInUser.Albums)
+			get
 			{
-				allNames.Add(album.Name);
+				return m_LoggedInUser.Educations;
 			}
-
-			return allNames;
 		}
-		*/
 
-		public Education[] GetEducations()
+		public FacebookObjectCollection<Page> UserLikedPages
 		{
-			return m_LoggedInUser.Educations;
+			get
+			{
+				return m_LoggedInUser.LikedPages;
+			}
 		}
 
-		public FacebookObjectCollection<Page> GetUserLikedPages()
+		public FacebookObjectCollection<Post> UserPosts
 		{
-			return m_LoggedInUser.LikedPages;
+			get
+			{
+				return m_LoggedInUser.Posts;
+			}
 		}
 
-		public FacebookObjectCollection<Post> GetUserPosts()
-		{
-			return m_LoggedInUser.Posts;
-		}
-
-		public FacebookObjectCollection<Album> GetAlbums()
+		public FacebookObjectCollection<Album> Albums
         {
-            return m_LoggedInUser.Albums;
-        }
-
-        public FacebookObjectCollection<Event> GetEvents()
-		{
-			return m_LoggedInUser.Events;
-		}
-
-		/*
-		public WorkExperience[] GetWorkExperiences()
-		{
-
-			return m_LoggedInUser.WorkExperiences;
-		}
-		*/
-
-		public ICollection<string> GetSortedFriendsLocation()
-		{
-			ISet<string> locationsSet = new SortedSet<string>();
-
-			foreach (User currentFriend in m_LoggedInUser.Friends)
+			get
 			{
-				if (currentFriend.Location != null)
+				return m_LoggedInUser.Albums;
+			}
+		}
+
+        public FacebookObjectCollection<Event> Events
+		{
+			get
+			{
+				return m_LoggedInUser.Events;
+			}
+		}
+
+		public ICollection<string> SortedFriendsLocations
+		{
+			get
+			{
+				ISet<string> locationsSet = new SortedSet<string>();
+
+				foreach (User currentFriend in m_LoggedInUser.Friends)
 				{
-					locationsSet.Add(currentFriend.Location.Name);
+					if (currentFriend.Location != null)
+					{
+						locationsSet.Add(currentFriend.Location.Name);
+					}
 				}
-			}
 
-			return locationsSet;
+				return locationsSet;
+			}
 		}
 
-		/*
-		public ICollection<string> GetEventsNames()
+		public ICollection<WorkExperience> WorkPlaces
 		{
-			List<string> allEventsNames = new List<string>(m_LoggedInUser.Events.Count);
-			
-			foreach (Event currEvent in m_LoggedInUser.Events)
+			get
 			{
-				allEventsNames.Add(currEvent.Name);
+				List<WorkExperience> allWorkPlaces = new List<WorkExperience>(m_LoggedInUser.WorkExperiences.Length);
+
+				foreach (WorkExperience currWorkPlace in m_LoggedInUser.WorkExperiences)
+				{
+					allWorkPlaces.Add(currWorkPlace);
+				}
+
+				return allWorkPlaces;
 			}
-
-			return allEventsNames;
-		}
-		*/
-
-		public ICollection<WorkExperience> GetWorkPlaces()
-		{
-			List<WorkExperience> allWorkPlaces = new List<WorkExperience>(m_LoggedInUser.WorkExperiences.Length);
-
-			foreach (WorkExperience currWorkPlace in m_LoggedInUser.WorkExperiences)
-			{
-				allWorkPlaces.Add(currWorkPlace);
-			}
-
-			return allWorkPlaces;
 		}
 
-		public ICollection<string> GetAcademicInstitutionsNames()
-		{
-			List<string> allAcademicInstitutionsNames = new List<string>(m_LoggedInUser.Educations.Length);
-
-			foreach (Education currAcademicInstitution in m_LoggedInUser.Educations)
-			{
-				allAcademicInstitutionsNames.Add(currAcademicInstitution.School.Name);
-			}
-
-			return allAcademicInstitutionsNames;
-		}
-
-		public FacebookObjectCollection<Photo> GetAlbumsPhotos(ICollection<string> i_AlbumsNamesCollection)
+		public FacebookObjectCollection<Photo> GetAlbumsPhotos(ICollection<Album> i_AlbumsCollection)
 		{
 			FacebookObjectCollection<Photo> photosCollection = new FacebookObjectCollection<Photo>();
 
-			foreach (Album album in m_LoggedInUser.Albums)
+			foreach (Album album in i_AlbumsCollection)
 			{
-				if (i_AlbumsNamesCollection.Contains(album.Name))
+				foreach (Photo photo in album.Photos)
 				{
-					foreach (Photo photo in album.Photos)
-					{
-						photosCollection.Add(photo);
-					}
+					photosCollection.Add(photo);
 				}
 			}
 
 			return photosCollection;
 		}
 
-		public FacebookObjectCollection<Photo> GetSharedFriendsPhotos(ICollection<string> i_FriendsNamesCollection)
+		public FacebookObjectCollection<Photo> GetSharedFriendsPhotos(ICollection<User> i_FriendsCollection)
 		{
 			FacebookObjectCollection<Photo> photosList = new FacebookObjectCollection<Photo>();
 
@@ -210,7 +171,7 @@ namespace Model
 				{
 					foreach (PhotoTag tag in photo.Tags)
 					{
-						if (i_FriendsNamesCollection.Contains(tag.User.Name))
+						if (i_FriendsCollection.Contains(tag.User))
 						{
 							photosList.Add(photo);
 							break;

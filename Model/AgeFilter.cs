@@ -10,7 +10,7 @@ namespace Model
 		private int m_MinAge;
 		private int m_MaxAge;
 
-		public AgeFilter(string i_Range)
+		internal AgeFilter(string i_Range)
 		{
 			const int k_MaxPossibleAge = 200;
 			const int k_StartOfMinAge = 0;

@@ -7,7 +7,7 @@ namespace Model
 	{
 		private User.eGender m_GenderType;
 
-		public GenderFilter(string i_GenderType)
+		internal GenderFilter(string i_GenderType)
 		{
 			const string k_MaleString = "male";
 

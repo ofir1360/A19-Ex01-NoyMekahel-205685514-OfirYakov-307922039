@@ -19,7 +19,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<string> locationsCollection = DataManagerWrapper.DataManager.GetSortedFriendsLocation();
+				ICollection<string> locationsCollection = DataManagerWrapper.DataManager.SortedFriendsLocations;
 
 				foreach (string currentLocation in locationsCollection)
 				{
@@ -57,7 +57,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<Event> allEvents = DataManagerWrapper.DataManager.GetEvents();
+				ICollection<Event> allEvents = DataManagerWrapper.DataManager.Events;
 
 				if (allEvents.Count > 0)
 				{
@@ -98,7 +98,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<WorkExperience> allWorkPlaces = DataManagerWrapper.DataManager.GetWorkPlaces();
+				ICollection<WorkExperience> allWorkPlaces = DataManagerWrapper.DataManager.WorkPlaces;
 
 				if (allWorkPlaces.Count > 0)
 				{
@@ -139,11 +139,11 @@ namespace UI
 		{
 			try
 			{
-				if (DataManagerWrapper.DataManager.GetEducations() != null)
+				Education[] education = DataManagerWrapper.DataManager.Educations;
+				if (education != null)
 				{
-					ICollection<string> allAcademicInstitutionsNames = DataManagerWrapper.DataManager.GetAcademicInstitutionsNames();
-
-					foreach (string currAcademicInstitution in allAcademicInstitutionsNames)
+					comboBoxAcademic.DisplayMember = "School.Name";
+					foreach (Education currAcademicInstitution in education)
 					{
 						comboBoxAcademic.Items.Add(currAcademicInstitution);
 					}

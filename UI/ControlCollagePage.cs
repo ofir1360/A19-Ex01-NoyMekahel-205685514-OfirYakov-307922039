@@ -57,7 +57,9 @@ namespace UI
 			try
 			{
 				checkedListBoxFilter.Items.Clear();
-				ICollection<User> friendsCollection = DataManagerWrapper.DataManager.GetFriends();
+				//this.bindingSourceFriendsGrid.DataSource = typeof(FacebookWrapper.ObjectModel.User);
+
+				ICollection<User> friendsCollection = DataManagerWrapper.DataManager.Friends;
 				checkedListBoxFilter.DisplayMember = "Name";
 
 				foreach (User friend in friendsCollection)
@@ -76,7 +78,7 @@ namespace UI
 			try
 			{
 				checkedListBoxFilter.Items.Clear();
-				ICollection<Album> albumsCollection = DataManagerWrapper.DataManager.GetAlbums();
+				ICollection<Album> albumsCollection = DataManagerWrapper.DataManager.Albums;
 				checkedListBoxFilter.DisplayMember = "Name";
 
 				foreach (Album album in albumsCollection)
@@ -128,7 +130,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<string> selectedAlbums = checkedListBoxFilter.CheckedItems.Cast<string>().ToList();
+				ICollection<Album> selectedAlbums = checkedListBoxFilter.CheckedItems.Cast<Album>().ToList();
 				m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetAlbumsPhotos(selectedAlbums);
 				populateCheckedListBoxPhotos();
 			}
@@ -153,7 +155,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<string> selectedFriends = checkedListBoxFilter.CheckedItems.Cast<string>().ToList();
+				ICollection<User> selectedFriends = checkedListBoxFilter.CheckedItems.Cast<User>().ToList();
 				m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetSharedFriendsPhotos(selectedFriends);
 				populateCheckedListBoxPhotos();
 			}
@@ -167,7 +169,7 @@ namespace UI
 		{
 			try
 			{
-				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.GetAlbums();
+				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.Albums;
 
 				m_FilteredPhotosCollection = new FacebookObjectCollection<Photo>();
 				int nodeCouner = 0;
@@ -260,9 +262,13 @@ namespace UI
 
 		private void formCollage_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			m_FrameUserChoice = (sender as FormCollageFrameOptions).GetUserChoice();
-			groupBoxPhotosChooser.Enabled = true;
-			buttonSelectPhotos.Enabled = true;
+			FormCollageFrameOptions form = sender as FormCollageFrameOptions;
+			if (form.DialogResult == DialogResult.OK)
+			{
+				m_FrameUserChoice = form.GetUserChoice();
+				groupBoxPhotosChooser.Enabled = true;
+				buttonSelectPhotos.Enabled = true;
+			}
 		}
 
 		private void buttonSeeCollage_Click(object sender, EventArgs e)

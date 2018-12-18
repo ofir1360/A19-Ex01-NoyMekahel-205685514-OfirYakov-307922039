@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Model
+﻿namespace Model
 {
 	public static class FilterFactory
 	{
 		public enum eFilter { GENDER, AGE };
 
-		internal static IFilter GetFilter(eFilter i_Filter, string i_Text)
+		public static IFilter GetFilter(eFilter i_Filter, string i_Text)
 		{
 			IFilter filter;
 

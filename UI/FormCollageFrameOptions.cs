@@ -86,7 +86,13 @@ namespace UI
 
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
+			DialogResult = DialogResult.OK;
 			this.Close();
+		}
+
+		internal void AddSaveListener(Action<object, FormClosingEventArgs> formCollage_FormClosing)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

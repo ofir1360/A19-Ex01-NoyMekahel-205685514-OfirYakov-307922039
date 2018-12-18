@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Model;
 using FacebookWrapper.ObjectModel;
-using static Model.FilterFactory;
 
 namespace UI
 {
@@ -55,15 +54,13 @@ namespace UI
 			if (checkBoxGender.Checked)
 			{
 				RadioButton genderPreferenceRadioButton = groupBoxGender.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-				//DataManagerWrapper.DataManager.Ride.AddFilter(new GenderFilter(genderPreferenceRadioButton.Text));
-				DataManagerWrapper.DataManager.Ride.AddFilter(eFilter.GENDER, genderPreferenceRadioButton.Text);
+				DataManagerWrapper.DataManager.Ride.AddFilter(FilterFactory.GetFilter(FilterFactory.eFilter.GENDER, genderPreferenceRadioButton.Text));
 			}
 
 			if (checkBoxAge.Checked)
 			{
 				RadioButton agePreferenceRadioButton = groupBoxAge.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-				//DataManagerWrapper.DataManager.Ride.AddFilter(new AgeFilter(agePreferenceRadioButton.Text));
-				DataManagerWrapper.DataManager.Ride.AddFilter(eFilter.AGE, agePreferenceRadioButton.Text);
+				DataManagerWrapper.DataManager.Ride.AddFilter(FilterFactory.GetFilter(FilterFactory.eFilter.AGE, agePreferenceRadioButton.Text));
 			}
 
 			try

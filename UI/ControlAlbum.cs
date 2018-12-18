@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
-using System.Threading;
 
 namespace UI
 {
@@ -17,7 +16,7 @@ namespace UI
 		{
 			try
 			{
-				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.GetAlbums();
+				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.Albums;
 
 				foreach (Album currentAlbum in allAlbums)
 				{
