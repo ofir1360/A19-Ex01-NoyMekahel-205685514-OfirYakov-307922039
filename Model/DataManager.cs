@@ -135,7 +135,7 @@ namespace Model
 		{
 			get
 			{
-				List<WorkExperience> allWorkPlaces = new List<WorkExperience>(m_LoggedInUser.WorkExperiences.Length);
+				List<WorkExperience> allWorkPlaces = new List<WorkExperience>();
 
 				foreach (WorkExperience currWorkPlace in m_LoggedInUser.WorkExperiences)
 				{

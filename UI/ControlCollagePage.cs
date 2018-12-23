@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using static Model.CollageData;
 using Model;
+using System.Threading;
 
 namespace UI
 {
@@ -15,7 +16,7 @@ namespace UI
 		private FacebookObjectCollection<Image> m_SelectedImagesCollection = new FacebookObjectCollection<Image>();
 		private eFrameCollage					m_FrameUserChoice;
 		private ICollection<CollageBase>		m_AllCollagesCollection;
-
+		private readonly object					r_FilteredPhotosCollectionLock = new object();
 		public ControlCollagePage()
 		{
 			InitializeComponent();
@@ -54,41 +55,49 @@ namespace UI
 
 		private void createFriendsCheckListBox()
 		{
+			checkedListBoxFilter.Items.Clear();
+			checkedListBoxFilter.DisplayMember = "Name";
+			new Thread(fetchFriends).Start();
+		}
+
+		private void fetchFriends()
+		{
 			try
 			{
-				checkedListBoxFilter.Items.Clear();
-				//this.bindingSourceFriendsGrid.DataSource = typeof(FacebookWrapper.ObjectModel.User);
-
 				ICollection<User> friendsCollection = DataManagerWrapper.DataManager.Friends;
-				checkedListBoxFilter.DisplayMember = "Name";
 
 				foreach (User friend in friendsCollection)
 				{
-					checkedListBoxFilter.Items.Add(friend);
+					checkedListBoxFilter.Invoke(new Action(() => checkedListBoxFilter.Items.Add(friend)));
 				}
 			}
 			catch (Exception)
 			{
-				FormFacebookApp.ShowFacebookError("Couldn't fetch your friends names data.");
+				FormFacebookApp.ShowFacebookError("Couldn't fetch your friends data.");
 			}
 		}
 
 		private void createAlbumsCheckListBox()
 		{
+			checkedListBoxFilter.Items.Clear();
+			checkedListBoxFilter.DisplayMember = "Name";
+			new Thread(fetchAlbums).Start();
+		}
+
+		private void fetchAlbums()
+		{
 			try
 			{
-				checkedListBoxFilter.Items.Clear();
 				ICollection<Album> albumsCollection = DataManagerWrapper.DataManager.Albums;
-				checkedListBoxFilter.DisplayMember = "Name";
 
 				foreach (Album album in albumsCollection)
 				{
-					checkedListBoxFilter.Items.Add(album);
+					checkedListBoxFilter.Invoke(new Action(() => checkedListBoxFilter.Items.Add(album)));
 				}
 			}
 			catch (Exception)
 			{
-				FormFacebookApp.ShowFacebookError("Couldn't fetch your albums names data.");
+				FormFacebookApp.ShowFacebookError("Couldn't fetch your albums data.");
 			}
 		}
 
@@ -97,7 +106,7 @@ namespace UI
 			checkedListBoxPhotos.Items.Clear();
 			if (radioButtonAllPhotos.Checked == true)
 			{
-				setAllPhotosOnListBox();
+				new Thread(setAllPhotosOnListBox).Start();
 			}
 			else if (radioButtonSharedPhotos.Checked == true)
 			{
@@ -107,7 +116,7 @@ namespace UI
 				}
 				else
 				{
-					setSharedPhotosOnListBox();
+					new Thread(setSharedPhotosOnListBox).Start();
 				}
 			}
 			else
@@ -118,7 +127,7 @@ namespace UI
 				}
 				else
 				{
-					setSelectedAlbumsPhotosOnListBox();
+					new Thread(setSelectedAlbumsPhotosOnListBox).Start();
 				}
 			}
 
@@ -131,8 +140,11 @@ namespace UI
 			try
 			{
 				ICollection<Album> selectedAlbums = checkedListBoxFilter.CheckedItems.Cast<Album>().ToList();
-				m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetAlbumsPhotos(selectedAlbums);
-				populateCheckedListBoxPhotos();
+				lock(r_FilteredPhotosCollectionLock)
+				{
+					m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetAlbumsPhotos(selectedAlbums);
+					populateCheckedListBoxPhotos();
+				}
 			}
 			catch (Exception)
 			{
@@ -146,7 +158,8 @@ namespace UI
 
 			foreach (Photo photo in m_FilteredPhotosCollection)
 			{
-				checkedListBoxPhotos.Items.Add(string.Format("Picture {0}", photoCounter));
+				checkedListBoxPhotos.Invoke(
+					new Action(() => checkedListBoxPhotos.Items.Add(string.Format("Picture {0}", photoCounter))));
 				photoCounter++;
 			}
 		}
@@ -156,8 +169,11 @@ namespace UI
 			try
 			{
 				ICollection<User> selectedFriends = checkedListBoxFilter.CheckedItems.Cast<User>().ToList();
-				m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetSharedFriendsPhotos(selectedFriends);
-				populateCheckedListBoxPhotos();
+				lock (r_FilteredPhotosCollectionLock)
+				{
+					m_FilteredPhotosCollection = DataManagerWrapper.DataManager.GetSharedFriendsPhotos(selectedFriends);
+					populateCheckedListBoxPhotos();
+				}
 			}
 			catch (Exception)
 			{
@@ -170,20 +186,24 @@ namespace UI
 			try
 			{
 				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.Albums;
-
-				m_FilteredPhotosCollection = new FacebookObjectCollection<Photo>();
-				int nodeCouner = 0;
-				foreach (Album album in allAlbums)
+				lock (r_FilteredPhotosCollectionLock)
 				{
-					int photoCounter = 1;
-					foreach (Photo photo in album.Photos)
+					m_FilteredPhotosCollection = new FacebookObjectCollection<Photo>();
+					int nodeCouner = 0;
+					foreach (Album album in allAlbums)
 					{
-						checkedListBoxPhotos.Items.Add(string.Format("{0} - Picture {1}", album.Name, photoCounter));
-						m_FilteredPhotosCollection.Add(photo);
-						photoCounter++;
-					}
+						int photoCounter = 1;
+						foreach (Photo photo in album.Photos)
+						{
+							checkedListBoxPhotos.Invoke(
+								new Action(() => checkedListBoxPhotos.Items.Add(
+								string.Format("{0} - Picture {1}", album.Name, photoCounter))));
+							m_FilteredPhotosCollection.Add(photo);
+							photoCounter++;
+						}
 
-					nodeCouner++;
+						nodeCouner++;
+					}
 				}
 			}
 			catch (Exception)

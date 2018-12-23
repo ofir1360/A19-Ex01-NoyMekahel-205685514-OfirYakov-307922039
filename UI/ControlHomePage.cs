@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace UI
 {
@@ -18,15 +19,8 @@ namespace UI
 
 		internal void FetchUserInfo()
 		{
-			try
-			{
-				controlUserDetails.ShowUserInfo();
-				ShowUserFriends();
-			}
-			catch (Exception)
-			{
-				FormFacebookApp.ShowFacebookError();
-			}
+			new Thread(controlUserDetails.ShowUserInfo).Start();
+			new Thread(ShowUserFriends).Start();
 		}
 
 		internal void ShowUserFriends()
@@ -36,15 +30,16 @@ namespace UI
 				FacebookObjectCollection<User> allFriends = DataManagerWrapper.DataManager.Friends;
 				int counter = 0;
 
-				bindingSourceFriendsGrid.DataSource = allFriends;
-
+				this.Invoke(new Action(() => bindingSourceFriendsGrid.DataSource = allFriends));
+			
 				foreach (User currentUser in allFriends)
 				{
 					DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell()
 					{
 						Value = currentUser.Location.Name
 					};
-					dataGridViewFriends.Rows[counter].Cells[locationColumn.Index] = cell;
+					dataGridViewFriends.Invoke(new Action(
+						() => dataGridViewFriends.Rows[counter].Cells[locationColumn.Index] = cell));
 					counter++;
 				}
 			}
@@ -61,28 +56,26 @@ namespace UI
 
 		private void buttonLikedPages_Click(object sender, EventArgs e)
 		{
-			showUserLikedPages();
+			new Thread(showUserLikedPages).Start();
 		}
 
 		private void showUserLikedPages()
 		{
 			try
 			{
-				FacebookObjectCollection<Page>	allLikedPages = DataManagerWrapper.DataManager.UserLikedPages;
-				ImageList						allPagesImage = getAllPagesImage(allLikedPages);
-
-				listViewLikedPages.SmallImageList = allPagesImage;
+				FacebookObjectCollection<Page> allLikedPages = DataManagerWrapper.DataManager.UserLikedPages;
+				getAllPagesImage(allLikedPages);
 
 				foreach (Page currentPage in allLikedPages)
 				{
 					ListViewItem item = new ListViewItem() { ImageIndex = 0 };
 					item.SubItems.Add(currentPage.Name);
 					item.SubItems.Add(currentPage.LikesCount.ToString());
-					listViewLikedPages.Items.Add(item);
+					listViewLikedPages.Invoke(new Action(() => listViewLikedPages.Items.Add(item)));
 				}
 
-				buttonLikedPages.Enabled = false;
-				listViewLikedPages.Visible = true;
+				buttonLikedPages.Invoke(new Action(() => buttonLikedPages.Enabled = false));
+				listViewLikedPages.Invoke(new Action(() => listViewLikedPages.Visible = true));
 			}
 			catch (Exception)
 			{
@@ -90,7 +83,7 @@ namespace UI
 			}
 		}
 
-		private ImageList getAllPagesImage(FacebookObjectCollection<Page> i_AllLikedPages)
+		private void getAllPagesImage(FacebookObjectCollection<Page> i_AllLikedPages)
 		{
 			ImageList allPagesImage = new ImageList();
 
@@ -99,12 +92,12 @@ namespace UI
 				allPagesImage.Images.Add(currentPage.ImageSmall);
 			}
 
-			return allPagesImage;
+			listViewLikedPages.Invoke(new Action(() => listViewLikedPages.SmallImageList = allPagesImage));
 		}
 
 		private void buttonPosts_Click(object sender, EventArgs e)
 		{
-			showUserPosts();
+			new Thread(showUserPosts).Start();
 		}
 
 		private void showUserPosts()
@@ -119,13 +112,14 @@ namespace UI
 					{
 						ListViewItem item = new ListViewItem() { Text = currentPost.CreatedTime.ToString() };
 						item.SubItems.Add(currentPost.Message);
-						listViewPosts.Items.Add(item);
+						listViewPosts.Invoke(new Action(() => listViewPosts.Items.Add(item)));
+
 					}
 				}
 
-				listViewPosts.Columns[messagesColumn.Index].Width = -1;
-				buttonPosts.Enabled = false;
-				listViewPosts.Visible = true;
+				listViewPosts.Invoke(new Action(() => listViewPosts.Columns[messagesColumn.Index].Width = -1));
+				buttonPosts.Invoke(new Action(() => buttonPosts.Enabled = false));
+				listViewPosts.Invoke(new Action(() => listViewPosts.Visible = true));
 			}
 			catch (Exception)
 			{

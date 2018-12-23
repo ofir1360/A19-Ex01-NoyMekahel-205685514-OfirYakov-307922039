@@ -49,7 +49,7 @@ namespace UI
 		private void manualConnection()
 		{
 			DataManagerWrapper.SetDataManager(this, FacebookConnection.Login());
-			showHomePage();
+			invokeHomePage();
 		}
 
 		private void initializeUserPreferences()
@@ -62,7 +62,6 @@ namespace UI
 		{
 			try
 			{
-				//new Thread(manualConnection).Start();
 				manualConnection();
 			}
 			catch (Exception ex)
@@ -115,7 +114,6 @@ namespace UI
 		private void buttonLogout_Click(object sender, EventArgs e)
 		{
 			this.BackgroundImage = global::UI.Properties.Resources.faccebook_background;
-			//new Thread(FacebookConnection.Logout).Start();
 			FacebookConnection.Logout();
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(buttonLogin);
@@ -139,6 +137,7 @@ namespace UI
 			controlRidePage.AddBackButton(buttonBack);
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(controlRidePage);
+			new Thread(controlRidePage.CreateLocationsList).Start();
 		}
 
 		private void buttonBack_Click(object sender, EventArgs e)

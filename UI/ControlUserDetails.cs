@@ -14,7 +14,7 @@ namespace UI
 		{
 			try
 			{
-				dataManagerBindingSource.DataSource = DataManagerWrapper.DataManager;
+				this.Invoke(new Action(() => dataManagerBindingSource.DataSource = DataManagerWrapper.DataManager));
 			}
 			catch (Exception)
 			{

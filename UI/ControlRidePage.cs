@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace UI
 {
@@ -12,10 +13,9 @@ namespace UI
 		public ControlRidePage()
 		{
 			InitializeComponent();
-			createLocationsList();
 		}
 
-		private void createLocationsList()
+		internal void CreateLocationsList()
 		{
 			try
 			{
@@ -23,7 +23,7 @@ namespace UI
 
 				foreach (string currentLocation in locationsCollection)
 				{
-					listBoxLocations.Items.Add(currentLocation);
+					listBoxLocations.Invoke(new Action(() => listBoxLocations.Items.Add(currentLocation)));
 				}
 			}
 			catch (Exception)
@@ -38,22 +38,32 @@ namespace UI
 			{
 				m_RideFromLocationName = (sender as ListBox).SelectedItem.ToString();
 
-				try
-				{
-					handlePageAfterStartPointSelected();
-					DataManagerWrapper.DataManager.InitializeRide(m_RideFromLocationName);
-					FormMap map = new FormMap();
-					map.ShowLocationOnMap(m_RideFromLocationName);
-					map.ShowDialog();
-				}
-				catch (Exception ex)
-				{
-					FormFacebookApp.ShowFacebookError(ex.Message);
-				}
+				handlePageAfterStartPointSelected();
+				new Thread(initializeRide).Start();
+				FormMap map = new FormMap();
+				map.ShowLocationOnMap(m_RideFromLocationName);
+				map.ShowDialog();
+			}
+		}
+
+		private void initializeRide()
+		{
+			try
+			{
+				DataManagerWrapper.DataManager.InitializeRide(m_RideFromLocationName);
+			}
+			catch (Exception ex)
+			{
+				FormFacebookApp.ShowFacebookError(ex.Message);
 			}
 		}
 
 		private void buttonEvent_Click(object sender, EventArgs e)
+		{
+			new Thread(fetchEvents).Start();
+		}
+
+		private void fetchEvents()
 		{
 			try
 			{
@@ -61,13 +71,13 @@ namespace UI
 
 				if (allEvents.Count > 0)
 				{
-					comboBoxEvents.DisplayMember = "Name";
+					comboBoxEvents.Invoke(new Action(() => comboBoxEvents.DisplayMember = "Name"));
 					foreach (Event currentEvent in allEvents)
 					{
-						comboBoxEvents.Items.Add(currentEvent);
+						comboBoxEvents.Invoke(new Action(() => comboBoxEvents.Items.Add(currentEvent)));
 					}
 
-					comboBoxEvents.Enabled = true;
+					comboBoxEvents.Invoke(new Action(() => comboBoxEvents.Enabled = true));
 				}
 				else
 				{
@@ -96,19 +106,25 @@ namespace UI
 
 		private void buttonWork_Click(object sender, EventArgs e)
 		{
+			new Thread(fetchWorkPlaces).Start();
+		}
+
+		private void fetchWorkPlaces()
+		{
 			try
 			{
 				ICollection<WorkExperience> allWorkPlaces = DataManagerWrapper.DataManager.WorkPlaces;
 
 				if (allWorkPlaces.Count > 0)
 				{
-					comboBoxWork.DisplayMember = "Name";
+
+					comboBoxWork.Invoke(new Action(() => comboBoxWork.DisplayMember = "Name"));
 					foreach (WorkExperience currWorkPlace in allWorkPlaces)
 					{
-						comboBoxWork.Items.Add(currWorkPlace);
+						comboBoxWork.Invoke(new Action(() => comboBoxWork.Items.Add(currWorkPlace)));
 					}
 
-					comboBoxWork.Enabled = true;
+					comboBoxWork.Invoke(new Action(() => comboBoxWork.Enabled = true));
 				}
 				else
 				{
@@ -137,18 +153,23 @@ namespace UI
 
 		private void buttonAcademicInstitution_Click(object sender, EventArgs e)
 		{
+			new Thread(fetchEducations).Start();
+		}
+
+		private void fetchEducations()
+		{
 			try
 			{
 				Education[] education = DataManagerWrapper.DataManager.Educations;
 				if (education != null)
 				{
-					comboBoxAcademic.DisplayMember = "School.Name";
+					comboBoxAcademic.Invoke(new Action(() => comboBoxAcademic.DisplayMember = "School.Name"));
 					foreach (Education currAcademicInstitution in education)
 					{
-						comboBoxAcademic.Items.Add(currAcademicInstitution);
+						comboBoxAcademic.Invoke(new Action(() => comboBoxAcademic.Items.Add(currAcademicInstitution)));
 					}
 
-					comboBoxAcademic.Enabled = true;
+					comboBoxAcademic.Invoke(new Action(() => comboBoxAcademic.Enabled = true));
 				}
 				else
 				{
