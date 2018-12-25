@@ -14,6 +14,7 @@ namespace UI
 		public PhotoPictureBox(Photo i_Photo)
 		{
 			Photo = i_Photo;
+			LoadAsync(Photo.PictureNormalURL);
 		}
 
 		protected override void OnClick(EventArgs e)

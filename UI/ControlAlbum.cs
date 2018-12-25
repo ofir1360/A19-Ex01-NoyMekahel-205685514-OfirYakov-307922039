@@ -88,13 +88,12 @@ namespace UI
 
 		private void addSinglePhoto(Photo i_Photo)
 		{
-			PictureBox photoToAdd = new PhotoPictureBox(i_Photo)
+			Control photoToAdd = new PhotoPictureBox(i_Photo)
 			{
 				Size = new Size(95, 80),
 				SizeMode = PictureBoxSizeMode.StretchImage
 			};
 
-			photoToAdd.LoadAsync(i_Photo.PictureNormalURL);
 			flowLayoutPanelUserAlbumsPhotos.Controls.Add(photoToAdd);
 
 		}
