@@ -165,7 +165,7 @@
 			// 
 			// dataManagerBindingSource
 			// 
-			this.dataManagerBindingSource.DataSource = typeof(Model.DataManager);
+			this.dataManagerBindingSource.DataSource = typeof(Model.DataManagerFacade);
 			// 
 			// ControlUserDetails
 			// 

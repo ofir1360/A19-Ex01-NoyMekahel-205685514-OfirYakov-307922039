@@ -12,9 +12,9 @@ namespace UI
 	{
 		private static FormFacebookApp m_OwnerApp;
 
-		public static DataManager DataManager { get; private set; }
+		public static DataManagerFacade DataManager { get; private set; }
 
-		internal static void SetDataManager(FormFacebookApp i_FacebookApp, DataManager i_DataManager)
+		internal static void SetDataManager(FormFacebookApp i_FacebookApp, DataManagerFacade i_DataManager)
 		{
 			if (DataManager == null)
 			{

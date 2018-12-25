@@ -119,6 +119,9 @@
     </Compile>
     <Compile Include="IBackable.cs" />
     <Compile Include="ILogoutable.cs" />
+    <Compile Include="PhotoPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ControlCollagePage.resx">

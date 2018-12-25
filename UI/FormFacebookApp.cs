@@ -94,7 +94,8 @@ namespace UI
 		{
 			BackgroundImage = global::UI.Properties.Resources.facebook_widescreen_navy_background_image;
 			panelMain.Controls.Clear();
-			panelMain.Controls.Add(this.controlHomePage);
+			controlHomePage = new ControlHomePage();
+			panelMain.Controls.Add(controlHomePage);
 			controlHomePage.AddLogoutButton(buttonLogout);
 			controlHomePage.ButtonFindARide_AddClickedListener(new EventHandler(buttonFindARide_Click));
 			controlHomePage.ButtonCreateCollage_AddClickedListener(new EventHandler(buttonCreateCollage_Click));

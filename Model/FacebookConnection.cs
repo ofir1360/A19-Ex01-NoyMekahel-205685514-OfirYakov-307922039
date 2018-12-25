@@ -5,7 +5,7 @@ namespace Model
 {
 	public static class FacebookConnection
 	{
-		public static DataManager Login()
+		public static DataManagerFacade Login()
 		{
 			LoginResult result = FacebookService.Login(
 				"264186474290093", 
@@ -19,7 +19,7 @@ namespace Model
 			if (!string.IsNullOrEmpty(result.AccessToken))
 			{
 				AppSettings.Instance.LastAccessToken = result.AccessToken;
-				return new DataManager(result.LoggedInUser);
+				return new DataManagerFacade(result.LoggedInUser);
 			}
 			else
 			{
@@ -27,10 +27,10 @@ namespace Model
 			}
 		}
 
-		public static DataManager Connect(string i_LastAccessToken)
+		public static DataManagerFacade Connect(string i_LastAccessToken)
 		{
 			LoginResult result = FacebookService.Connect(i_LastAccessToken);
-			return new DataManager(result.LoggedInUser);
+			return new DataManagerFacade(result.LoggedInUser);
 		}
 
 		public static void Logout()

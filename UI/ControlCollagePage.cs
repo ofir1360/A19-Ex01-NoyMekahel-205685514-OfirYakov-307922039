@@ -17,6 +17,7 @@ namespace UI
 		private eFrameCollage					m_FrameUserChoice;
 		private ICollection<CollageBase>		m_AllCollagesCollection;
 		private readonly object					r_FilteredPhotosCollectionLock = new object();
+
 		public ControlCollagePage()
 		{
 			InitializeComponent();

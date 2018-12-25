@@ -88,7 +88,7 @@ namespace UI
 
 		private void addSinglePhoto(Photo i_Photo)
 		{
-			PictureBox photoToAdd = new PictureBox()
+			PictureBox photoToAdd = new PhotoPictureBox(i_Photo)
 			{
 				Size = new Size(95, 80),
 				SizeMode = PictureBoxSizeMode.StretchImage
@@ -96,29 +96,7 @@ namespace UI
 
 			photoToAdd.LoadAsync(i_Photo.PictureNormalURL);
 			flowLayoutPanelUserAlbumsPhotos.Controls.Add(photoToAdd);
-			photoToAdd.Click += (sender, e) => photoPictureBox_Click(i_Photo);
-			photoToAdd.MouseHover += photoPictureBox_MouseHover;
-			photoToAdd.MouseLeave += photoPictureBox_MouseLeave;
-		}
 
-		private void photoPictureBox_MouseLeave(object sender, EventArgs e)
-		{
-			PictureBox photoPictureBox = sender as PictureBox;
-			photoPictureBox.Cursor = Cursors.Default;
-			photoPictureBox.BorderStyle = BorderStyle.None;
-		}
-
-		private void photoPictureBox_MouseHover(object sender, EventArgs e)
-		{
-			PictureBox photoPictureBox = sender as PictureBox;
-			photoPictureBox.Cursor = Cursors.Hand;
-			photoPictureBox.BorderStyle = BorderStyle.Fixed3D;
-		}
-
-		private void photoPictureBox_Click(Photo i_Photo)
-		{
-			FormPhotoInfo	photoInfo = new FormPhotoInfo(i_Photo);
-			photoInfo.ShowDialog();
 		}
 
 		private void buttonAlbums_Click(object sender, EventArgs e)

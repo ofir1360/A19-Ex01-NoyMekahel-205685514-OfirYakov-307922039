@@ -58,7 +58,7 @@
     <Compile Include="CollageBase.cs" />
     <Compile Include="CollageData.cs" />
     <Compile Include="CollagesFactory.cs" />
-    <Compile Include="DataManager.cs" />
+    <Compile Include="DataManagerFacade.cs" />
     <Compile Include="EightImagesCollage.cs" />
     <Compile Include="FacebookConnection.cs" />
     <Compile Include="FilterFactory.cs" />
