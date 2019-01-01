@@ -2,7 +2,7 @@
 Exercise No...........: 2
 First Student Details.: 205685514 - Noy Mekahel
 Second Student Details: 307922039 - Ofir Yakov
-Delivery Date.........: 21 - Nov - 2018
+Delivery Date.........: 01 - JAN - 2019
 Delivered In Delay....: No
 Delay Reason..........: -
 Comments..............: -

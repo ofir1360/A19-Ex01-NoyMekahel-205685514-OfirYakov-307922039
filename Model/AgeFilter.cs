@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 
-
 namespace Model
 {
 	public class AgeFilter : IFilter

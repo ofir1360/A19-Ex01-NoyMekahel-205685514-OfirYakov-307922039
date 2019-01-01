@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <AppSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <LastAccessToken>EAADwRrT0W60BAGVlpgO4hA9AwLoB9ZBHL37N7ZCc7yUVSVZBm4ZCSgcpiHZC4GxWTdZCmvFanrCZA4mjtZBb9K9ewaYiypImU1SNiVPF3umFZCERrPlUs9LIRXr2TsiFJRxoUB7ZACw5lEghxyuDcHxHcAH8ObSqni1a8ZD</LastAccessToken>
+  <LastAccessToken>EAADwRrT0W60BAHkiNCtvvdjIDAz4tYj1phN02KZBUev7p4f56egcZBnmF9LnuZBfaw3ZCdfnClpjqk1i56Kh0rtA0jZAR3umhaS09Gt1nuciz4DWYUHFWZBvUAb17I2ki0byDKYKnZCwLvZAbZAeZArkajI71pybWUOh0Ha50vNZA789wZDZD</LastAccessToken>
   <Location>
-    <X>1077</X>
-    <Y>109</Y>
+    <X>292</X>
+    <Y>112</Y>
   </Location>
-  <RememberUser>true</RememberUser>
-  <LastSeen>2018-12-25T00:00:00+02:00</LastSeen>
+  <RememberUser>false</RememberUser>
 </AppSettings>

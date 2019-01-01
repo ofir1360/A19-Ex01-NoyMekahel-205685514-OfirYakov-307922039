@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using System.Threading;
+using FacebookWrapper.ObjectModel;
 
 namespace UI
 {
@@ -113,7 +113,6 @@ namespace UI
 						ListViewItem item = new ListViewItem() { Text = currentPost.CreatedTime.ToString() };
 						item.SubItems.Add(currentPost.Message);
 						listViewPosts.Invoke(new Action(() => listViewPosts.Items.Add(item)));
-
 					}
 				}
 

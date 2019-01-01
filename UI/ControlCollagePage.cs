@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 using FacebookWrapper.ObjectModel;
 using static Model.CollageData;
 using Model;
-using System.Threading;
 
 namespace UI
 {
 	public partial class ControlCollagePage : UserControl, ILogoutable, IBackable
 	{
+		private readonly object					r_FilteredPhotosCollectionLock = new object();
 		private FacebookObjectCollection<Photo> m_FilteredPhotosCollection;
 		private FacebookObjectCollection<Image> m_SelectedImagesCollection = new FacebookObjectCollection<Image>();
 		private eFrameCollage					m_FrameUserChoice;
 		private ICollection<CollageBase>		m_AllCollagesCollection;
-		private readonly object					r_FilteredPhotosCollectionLock = new object();
 
 		public ControlCollagePage()
 		{

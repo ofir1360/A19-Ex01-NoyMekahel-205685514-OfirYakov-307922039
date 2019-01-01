@@ -95,7 +95,6 @@ namespace UI
 			};
 
 			flowLayoutPanelUserAlbumsPhotos.Controls.Add(photoToAdd);
-
 		}
 
 		private void buttonAlbums_Click(object sender, EventArgs e)

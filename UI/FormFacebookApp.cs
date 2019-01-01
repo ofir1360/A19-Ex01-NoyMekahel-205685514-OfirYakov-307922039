@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Model;
 using System.Threading;
+using Model;
 
 namespace UI
 {
@@ -36,6 +36,7 @@ namespace UI
 			catch (Exception)
 			{
 			}
+
 			base.OnShown(e);
 		}
 
@@ -54,7 +55,7 @@ namespace UI
 
 		private void initializeUserPreferences()
 		{
-			this.Invoke(new Action(()=> Location = m_AppSettings.Location));
+			this.Invoke(new Action(() => Location = m_AppSettings.Location));
 			checkBoxRememberUser.Invoke(new Action(() => checkBoxRememberUser.Checked = m_AppSettings.RememberUser));
 		}
 

@@ -2,7 +2,11 @@
 {
 	public static class FilterFactory
 	{
-		public enum eFilter { GENDER, AGE };
+		public enum eFilter
+		{
+			GENDER,
+			AGE
+		}
 
 		public static IFilter GetFilter(eFilter i_Filter, string i_Text)
 		{

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using System.Threading;
+using FacebookWrapper.ObjectModel;
 
 namespace UI
 {
@@ -117,7 +117,6 @@ namespace UI
 
 				if (allWorkPlaces.Count > 0)
 				{
-
 					comboBoxWork.Invoke(new Action(() => comboBoxWork.DisplayMember = "Name"));
 					foreach (WorkExperience currWorkPlace in allWorkPlaces)
 					{
