@@ -5,6 +5,6 @@ namespace Model
 {
 	public interface IFilter
 	{
-		ICollection<User> filter(ICollection<User> i_Friends);
+		bool HasPassedFilter(User i_Friend);
 	}
 }

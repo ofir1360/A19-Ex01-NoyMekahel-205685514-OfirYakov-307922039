@@ -127,6 +127,9 @@
     <EmbeddedResource Include="ControlCollagePage.resx">
       <DependentUpon>ControlCollagePage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlHomePage.resx">
+      <DependentUpon>ControlHomePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlUserDetails.resx">
       <DependentUpon>ControlUserDetails.cs</DependentUpon>
     </EmbeddedResource>

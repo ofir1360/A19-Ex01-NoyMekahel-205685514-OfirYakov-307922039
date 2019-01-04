@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
 
 namespace Model
 {
@@ -14,19 +13,9 @@ namespace Model
 			m_GenderType = i_GenderType.ToLower().Equals(k_MaleString) ? User.eGender.male : User.eGender.female;
 		}
 
-		public ICollection<User> filter(ICollection<User> i_Friends)
+		public bool HasPassedFilter(User i_Friend)
 		{
-			HashSet<User> friendsFromStartPointToEndPoint = new HashSet<User>();
-
-			foreach (User user in i_Friends)
-			{
-				if (user.Gender == m_GenderType)
-				{
-					friendsFromStartPointToEndPoint.Add(user);
-				}
-			}
-
-			return friendsFromStartPointToEndPoint;
+			return i_Friend.Gender == m_GenderType;
 		}
 	}
 }

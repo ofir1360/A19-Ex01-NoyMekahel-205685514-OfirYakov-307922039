@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 
 namespace Model
@@ -42,20 +41,11 @@ namespace Model
 			return		i_Birthday.Length == k_LengthStringWithBirthYear;
 		}
 
-		public ICollection<User> filter(ICollection<User> i_Friends)
+		public bool HasPassedFilter(User i_Friend)
 		{
-			HashSet<User> friendsFromStartPointToEndPoint = new HashSet<User>();
+			int? age = GetAgeFromUserBirthday(i_Friend.Birthday);
 
-			foreach(User user in i_Friends)
-			{
-				int? age = GetAgeFromUserBirthday(user.Birthday);
-				if(age >= m_MinAge && age <= m_MaxAge)
-				{
-					friendsFromStartPointToEndPoint.Add(user);
-				}
-			}
-
-			return friendsFromStartPointToEndPoint;
+			return age >= m_MinAge && age <= m_MaxAge;
 		}
 	}
 }

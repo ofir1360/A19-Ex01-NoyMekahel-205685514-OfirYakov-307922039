@@ -98,12 +98,12 @@ namespace UI
 			controlHomePage = new ControlHomePage();
 			panelMain.Controls.Add(controlHomePage);
 			controlHomePage.AddLogoutButton(buttonLogout);
-			controlHomePage.ButtonFindARide_AddClickedListener(new EventHandler(buttonFindARide_Click));
-			controlHomePage.ButtonCreateCollage_AddClickedListener(new EventHandler(buttonCreateCollage_Click));
+			controlHomePage.ButtonCreateCollageClicked += buttonCreateCollage_Click;
+			controlHomePage.ButtonFindARideClicked += buttonFindARide_Click;
 			controlHomePage.FetchUserInfo();
 		}
 
-		private void buttonCreateCollage_Click(object sender, EventArgs e)
+		private void buttonCreateCollage_Click()
 		{
 			controlCollagePage = new ControlCollagePage();
 
@@ -111,6 +111,17 @@ namespace UI
 			controlCollagePage.AddBackButton(buttonBack);
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(controlCollagePage);
+		}
+
+		private void buttonFindARide_Click()
+		{
+			controlRidePage = new ControlRidePage();
+
+			controlRidePage.AddLogoutButton(buttonLogout);
+			controlRidePage.AddBackButton(buttonBack);
+			panelMain.Controls.Clear();
+			panelMain.Controls.Add(controlRidePage);
+			new Thread(controlRidePage.CreateLocationsList).Start();
 		}
 
 		private void buttonLogout_Click(object sender, EventArgs e)
@@ -129,17 +140,6 @@ namespace UI
 			checkBoxRememberUser.Visible = true;
 			buttonLogin.Enabled = true;
 			buttonLogin.Text = "Login";
-		}
-
-		private void buttonFindARide_Click(object sender, EventArgs e)
-		{
-			controlRidePage = new ControlRidePage();
-
-			controlRidePage.AddLogoutButton(buttonLogout);
-			controlRidePage.AddBackButton(buttonBack);
-			panelMain.Controls.Clear();
-			panelMain.Controls.Add(controlRidePage);
-			new Thread(controlRidePage.CreateLocationsList).Start();
 		}
 
 		private void buttonBack_Click(object sender, EventArgs e)

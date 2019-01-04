@@ -76,7 +76,7 @@ namespace UI
 			this.labelFriensList.Location = new System.Drawing.Point(11, 428);
 			this.labelFriensList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelFriensList.Name = "labelFriensList";
-			this.labelFriensList.Size = new System.Drawing.Size(176, 32);
+			this.labelFriensList.Size = new System.Drawing.Size(116, 24);
 			this.labelFriensList.TabIndex = 11;
 			this.labelFriensList.Text = "Your friends:";
 			// 
@@ -91,13 +91,13 @@ namespace UI
 			this.dataGridViewFriends.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.dataGridViewFriends.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewFriends.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.FirstName,
-			this.LastName,
-			this.ImageSmall,
-			this.birthdayDataGridViewTextBoxColumn,
-			this.aboutDataGridViewTextBoxColumn,
-			this.emailDataGridViewTextBoxColumn,
-			this.locationColumn});
+            this.FirstName,
+            this.LastName,
+            this.ImageSmall,
+            this.birthdayDataGridViewTextBoxColumn,
+            this.aboutDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.locationColumn});
 			this.dataGridViewFriends.DataSource = this.bindingSourceFriendsGrid;
 			this.dataGridViewFriends.Location = new System.Drawing.Point(2, 464);
 			this.dataGridViewFriends.Margin = new System.Windows.Forms.Padding(2);
@@ -187,8 +187,8 @@ namespace UI
 			this.listViewPosts.BackgroundImage = global::UI.Properties.Resources.facebook_widescreen_navy_background_image;
 			this.listViewPosts.BackgroundImageTiled = true;
 			this.listViewPosts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.postDateColumn,
-			this.messagesColumn});
+            this.postDateColumn,
+            this.messagesColumn});
 			this.listViewPosts.Location = new System.Drawing.Point(264, 328);
 			this.listViewPosts.Name = "listViewPosts";
 			this.listViewPosts.Size = new System.Drawing.Size(363, 131);
@@ -213,9 +213,9 @@ namespace UI
 			this.listViewLikedPages.BackgroundImage = global::UI.Properties.Resources.facebook_widescreen_navy_background_image;
 			this.listViewLikedPages.BackgroundImageTiled = true;
 			this.listViewLikedPages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.ImageColumnHeader,
-			this.pageNameColumnHeader,
-			this.likesCountColumnHeader});
+            this.ImageColumnHeader,
+            this.pageNameColumnHeader,
+            this.likesCountColumnHeader});
 			this.listViewLikedPages.Location = new System.Drawing.Point(3, 328);
 			this.listViewLikedPages.Name = "listViewLikedPages";
 			this.listViewLikedPages.Size = new System.Drawing.Size(254, 97);
@@ -258,6 +258,7 @@ namespace UI
 			this.buttonCreateCollage.TabIndex = 59;
 			this.buttonCreateCollage.Text = "Create Collage";
 			this.buttonCreateCollage.UseVisualStyleBackColor = false;
+			this.buttonCreateCollage.Click += new System.EventHandler(this.buttonCreateCollage_Click);
 			// 
 			// buttonPosts
 			// 
@@ -314,6 +315,7 @@ namespace UI
 			this.buttonFindARide.TabIndex = 62;
 			this.buttonFindARide.Text = "Find A Ride";
 			this.buttonFindARide.UseVisualStyleBackColor = false;
+			this.buttonFindARide.Click += new System.EventHandler(this.buttonFindARide_Click);
 			// 
 			// controlUserAlbums
 			// 

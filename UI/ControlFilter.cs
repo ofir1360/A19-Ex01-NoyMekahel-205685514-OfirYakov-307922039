@@ -51,6 +51,8 @@ namespace UI
 
 		private void buttonFilter_Click(object sender, EventArgs e)
 		{
+			DataManagerWrapper.DataManager.Ride.ClearFilters();
+
 			if (checkBoxGender.Checked)
 			{
 				RadioButton genderPreferenceRadioButton = groupBoxGender.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);

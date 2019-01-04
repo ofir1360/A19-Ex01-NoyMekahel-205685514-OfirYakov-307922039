@@ -65,9 +65,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<User> friendsCollection = DataManagerWrapper.DataManager.Friends;
-
-				foreach (User friend in friendsCollection)
+				foreach (User friend in DataManagerWrapper.DataManager.Friends)
 				{
 					checkedListBoxFilter.Invoke(new Action(() => checkedListBoxFilter.Items.Add(friend)));
 				}
@@ -89,9 +87,7 @@ namespace UI
 		{
 			try
 			{
-				ICollection<Album> albumsCollection = DataManagerWrapper.DataManager.Albums;
-
-				foreach (Album album in albumsCollection)
+				foreach (Album album in DataManagerWrapper.DataManager.Albums)
 				{
 					checkedListBoxFilter.Invoke(new Action(() => checkedListBoxFilter.Items.Add(album)));
 				}
@@ -186,12 +182,11 @@ namespace UI
 		{
 			try
 			{
-				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.Albums;
 				lock (r_FilteredPhotosCollectionLock)
 				{
 					m_FilteredPhotosCollection = new FacebookObjectCollection<Photo>();
 					int nodeCouner = 0;
-					foreach (Album album in allAlbums)
+					foreach (Album album in DataManagerWrapper.DataManager.Albums)
 					{
 						int photoCounter = 1;
 						foreach (Photo photo in album.Photos)

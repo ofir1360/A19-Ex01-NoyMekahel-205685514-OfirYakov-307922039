@@ -16,9 +16,7 @@ namespace UI
 		{
 			try
 			{
-				FacebookObjectCollection<Album> allAlbums = DataManagerWrapper.DataManager.Albums;
-
-				foreach (Album currentAlbum in allAlbums)
+				foreach (Album currentAlbum in DataManagerWrapper.DataManager.Albums)
 				{
 					addSingleAlbum(currentAlbum);
 				}

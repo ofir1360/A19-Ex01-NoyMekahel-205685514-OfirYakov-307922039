@@ -11,11 +11,8 @@ namespace UI
 		{
 			InitializeComponent();
 		}
-
-		internal void ButtonFindARide_AddClickedListener(EventHandler i_EventHandler)
-		{
-			this.buttonFindARide.Click += i_EventHandler;
-		}
+		public event Action ButtonFindARideClicked;
+		public event Action ButtonCreateCollageClicked;
 
 		internal void FetchUserInfo()
 		{
@@ -27,12 +24,11 @@ namespace UI
 		{
 			try
 			{
-				FacebookObjectCollection<User> allFriends = DataManagerWrapper.DataManager.Friends;
 				int counter = 0;
 
-				this.Invoke(new Action(() => bindingSourceFriendsGrid.DataSource = allFriends));
+				this.Invoke(new Action(() => bindingSourceFriendsGrid.DataSource = DataManagerWrapper.DataManager.Friends));
 			
-				foreach (User currentUser in allFriends)
+				foreach (User currentUser in DataManagerWrapper.DataManager.Friends)
 				{
 					DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell()
 					{
@@ -126,9 +122,14 @@ namespace UI
 			}
 		}
 
-		internal void ButtonCreateCollage_AddClickedListener(EventHandler i_EventHandler)
+		private void buttonCreateCollage_Click(object sender, EventArgs e)
 		{
-			this.buttonCreateCollage.Click += i_EventHandler;
+			ButtonCreateCollageClicked?.Invoke();
+		}
+
+		private void buttonFindARide_Click(object sender, EventArgs e)
+		{
+			ButtonFindARideClicked?.Invoke();
 		}
 	}
 }

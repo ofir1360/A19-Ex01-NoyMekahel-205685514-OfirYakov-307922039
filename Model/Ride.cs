@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using static Model.FilterFactory;
 
@@ -51,6 +52,14 @@ namespace Model
 			return friendsFromAcademicInstitution;
 		}
 
+		public void ClearFilters()
+		{
+			if (m_FilterList != null)
+			{
+				m_FilterList.Clear();
+			}
+		}
+
 		public ICollection<User> GetFriendsFromChosenEvent(string i_EventName)
 		{
 			List<User> friendsFromChosenEvent = new List<User>();
@@ -83,16 +92,29 @@ namespace Model
 
 		public ICollection<User> Filter()
 		{
-			ICollection<User> friendsBeforeFilter = FriendsFromStartPointToEndPoint;
-			ICollection<User> friendsAfterFilter = friendsBeforeFilter;
+			List<User> filteredFriends = new List<User>();
+			bool isUserSucceededAllFiltered = true;
 
-			foreach (IFilter filter in m_FilterList)
+			foreach (User user in FriendsFromStartPointToEndPoint)
 			{
-				friendsAfterFilter = filter.filter(friendsBeforeFilter);
-				friendsBeforeFilter = friendsAfterFilter;
+				isUserSucceededAllFiltered = true;
+
+				foreach (IFilter filter in m_FilterList)
+				{
+					if(!filter.HasPassedFilter(user))
+					{
+						isUserSucceededAllFiltered = false;
+						break;
+					}
+				}
+
+				if(isUserSucceededAllFiltered)
+				{
+					filteredFriends.Add(user);
+				}
 			}
 
-			return friendsAfterFilter;
+			return filteredFriends;
 		}
 	}
 }

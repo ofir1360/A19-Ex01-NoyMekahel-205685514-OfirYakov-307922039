@@ -9,6 +9,7 @@ namespace Model
 	public class DataManagerFacade
 	{
 		private User m_LoggedInUser;
+		private Albums m_Albums;
 
 		public Ride Ride { get; private set; }
 
@@ -97,11 +98,15 @@ namespace Model
 			}
 		}
 
-		public FacebookObjectCollection<Album> Albums
+		public Albums Albums
         {
 			get
 			{
-				return m_LoggedInUser.Albums;
+				if(m_Albums == null)
+				{
+					m_Albums = new Albums(m_LoggedInUser.Albums);
+				}
+				return m_Albums;
 			}
 		}
 
