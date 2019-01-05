@@ -8,8 +8,9 @@ namespace Model
 {
 	public class DataManagerFacade
 	{
-		private User m_LoggedInUser;
-		private Albums m_Albums;
+		private User				m_LoggedInUser;
+		private Albums				m_Albums;
+		private readonly object		r_AlbumsLock = new object();
 
 		public Ride Ride { get; private set; }
 
@@ -104,8 +105,15 @@ namespace Model
 			{
 				if(m_Albums == null)
 				{
-					m_Albums = new Albums(m_LoggedInUser.Albums);
+					lock(r_AlbumsLock)
+					{
+						if (m_Albums == null)
+						{
+							m_Albums = new Albums(m_LoggedInUser.Albums);
+						}
+					}
 				}
+
 				return m_Albums;
 			}
 		}

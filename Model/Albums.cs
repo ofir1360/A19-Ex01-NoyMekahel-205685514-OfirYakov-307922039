@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using FacebookWrapper.ObjectModel;
 
 namespace Model
 {
-	public class Albums
+	public class Albums : IEnumerable<Album>
 	{
 		ICollection<Album> m_AlbumsCollection;
 
@@ -24,5 +21,9 @@ namespace Model
 			}
 		}
 
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 	}
 }
